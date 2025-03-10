@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Win Rate</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="Image/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="#">Leaderboard</a></li>
+                    <li><a href="#">Reward</a></li>
+                    <li><a href="kalkulator-page.html">Kalkulator</a></li>
+                </ul>
+            </nav>
+            <div class="search-profile">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="profile">
+                    <img src="Image/profile.png" alt="Profile" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Kalkulator Win Rate Section -->
+    <section class="kalkulator-section">
+        <div class="container">
+            <h2>Kalkulator Win Rate</h2>
+            <div class="kalkulator">
+                <input type="number" id="totalMatches" placeholder="Total Pertandingan Saat Ini">
+                <input type="number" id="currentWins" placeholder="Total Win Rate Saat Ini">
+                <input type="number" id="desiredWinRate" placeholder="Win Rate Yang Diinginkan">
+                <button onclick="calculateWinRate()">Hitung</button>
+                <p id="result"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 WSA TOPUP | Made by Group Transaksi</p>
+        </div>
+    </footer>
+
+    <script>
+      function calculateWinRate() {
+          const totalMatches = parseInt(document.getElementById('totalMatches').value);
+          const currentWinRatePercentage = parseInt(document.getElementById('currentWins').value);
+          const desiredWinRate = parseInt(document.getElementById('desiredWinRate').value);
+  
+          if (isNaN(totalMatches) || isNaN(currentWinRatePercentage) || isNaN(desiredWinRate)) {
+              document.getElementById('result').textContent = 'Please enter valid numbers.';
+              return;
+          }
+  
+          const currentActualWins = (currentWinRatePercentage / 100) * totalMatches;
+  
+          if (currentWinRatePercentage >= desiredWinRate) {
+              document.getElementById('result').textContent = `You already have a ${desiredWinRate}% win rate or higher.`;
+              return;
+          }
+  
+          const numerator = desiredWinRate * totalMatches - 100 * currentActualWins;
+          const denominator = 100 - desiredWinRate;
+  
+          if (denominator <= 0) {
+              document.getElementById('result').textContent = 'Desired win rate must be less than 100%.';
+              return;
+          }
+  
+          const requiredWins = Math.ceil(numerator / denominator);
+  
+          if (requiredWins < 0) {
+              document.getElementById('result').textContent = `You already have a ${desiredWinRate}% win rate or higher.`;
+          } else {
+              document.getElementById('result').textContent = `You need about ${requiredWins} more wins without losing to get a ${desiredWinRate}% win rate.`;
+          }
+      }
+  </script>
+</body>
+</html>
