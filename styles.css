@@ -452,7 +452,8 @@ footer {
     font-size: 18px;
     cursor: pointer;
     background-color: #ffa500;
-    color: #fff;
+    color: #000000;
+    font-weight: bold;
     transition: background-color 0.3s;
     margin-top: 30px;
 }
