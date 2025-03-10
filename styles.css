@@ -411,3 +411,62 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* Kalkulator Win Rate Styles */
+.kalkulator-section {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.kalkulator {
+    display: inline-block;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.kalkulator input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+}
+
+.kalkulator button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #ffa500;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.kalkulator button:hover {
+    background-color: #ff8c00;
+}
+
+.kalkulator p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ffa500;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
