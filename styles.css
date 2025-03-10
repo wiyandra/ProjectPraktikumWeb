@@ -486,3 +486,146 @@ footer {
     text-align: center;
     color: #999;
 }
+
+/* Riwayat Transaksi Section */
+.riwayat-transaksi {
+    padding: 20px 0;
+}
+
+.riwayat-transaksi h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.table-header button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.table-header button.active {
+    background-color: #ffa500;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #af8049;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #55492f;
+}
+
+table td {
+    background-color: #333;
+}
+.cek-pembelian-section {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.cek-pembelian {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cek-pembelian h3 {
+    color: #ffa500;
+    margin-bottom: 10px;
+}
+
+.cek-pembelian input {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #222;
+    color: #fff;
+}
+
+.cek-pembelian button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ffa500;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.cek-pembelian button:hover {
+    background-color: #ff8c00;
+}
+
+.table-container {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.table-header button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.table-header button.active {
+    background-color: #ffa500;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #af8049;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #55492f;
+}
+
+table td {
+    background-color: #333;
+}
