@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSA TOPUP | Payment Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar input {
+            background-color: #333;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: #fff;
+            width: 250px;
+        }
+        
+        .user-icon {
+            margin-left: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Progress Section */
+        .progress-section {
+            background-color: #222;
+            border-radius: 10px;
+            margin: 20px 0;
+            padding: 20px;
+        }
+        
+        .progress-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-title .dot {
+            width: 20px;
+            height: 20px;
+            background-color: #ff6600;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+        
+        .step {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .step-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .step-title {
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .step-desc {
+            font-size: 12px;
+            color: #999;
+        }
+        
+        /* Timer */
+        .timer {
+            background-color: #ff006e;
+            color: white;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .info-card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1;
+        }
+        
+        .card-title {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .account-info {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .game-image {
+            width: 120px;
+            height: 120px;
+            margin-right: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .game-title {
+            margin-top: 10px;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            background: #333;
+            padding: 8px;
+            border-radius: 5px;
+            width: 100%;
+        }
+        
+        .account-details {
+            flex: 1;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .detail-label {
+            width: 100px;
+            color: #999;
+        }
+        
+        .detail-value {
+            flex: 1;
+            font-weight: 500;
+        }
+        
+        /* Payment Method */
+        .payment-method {
+            margin-top: 20px;
+        }
+        
+        .method-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .method-title {
+            font-weight: 500;
+        }
+        
+        .method-icon {
+            transform: rotate(0deg);
+            transition: transform 0.3s;
+        }
+        
+        /* Payment Details */
+        .payment-details {
+            background-color: #333;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .total-payment {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            background-color: #444;
+            border-radius: 5px;
+            margin-top: 15px;
+            align-items: center;
+        }
+        
+        .copy-icon {
+            width: 20px;
+            height: 20px;
+            background-color: #666;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        /* QR Code */
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .download-btn {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Status Labels */
+        .status-label {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .status-success {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .status-pending {
+            background-color: #FFC107;
+            color: black;
+        }
+
+        .status-unpaid {
+            background-color: #c64b2a;
+            color: black;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <img src="/Pembayaran/WSA STORE.PNG" alt="WSA TOPUP Logo" style="max-height: 40px;">
+            </div>
+            <div class="nav-menu">
+                <a href="#">Beranda</a>
+                <a href="#">Leaderboard</a>
+                <a href="#">Riwayat</a>
+                <a href="#">Kalkulator</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Cari Topup atau Joki Games">
+                <div class="user-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Progress Section -->
+        <div class="progress-section">
+            <div class="progress-title">
+                <div class="dot"></div>
+                <h3>Progres Transaksi</h3>
+            </div>
+            <div class="progress-steps">
+                <div class="step">
+                    <div class="step-icon" style="background-color: #4CAF50;">
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.2915 15.042L6.38504 18.9485C6.07372 19.2598 5.91807 19.4154 5.80675 19.5971C5.70806 19.7581 5.63533 19.9337 5.59124 20.1174C5.5415 20.3245 5.5415 20.5447 5.5415 20.9849V29.5787C5.5415 30.5868 5.5415 31.0908 5.73769 31.4758C5.91026 31.8145 6.18563 32.0899 6.52432 32.2625C6.90936 32.4587 7.41341 32.4587 8.4215 32.4587H29.5782C30.5863 32.4587 31.0903 32.4587 31.4754 32.2625C31.814 32.0899 32.0894 31.8145 32.262 31.4758C32.4582 31.0908 32.4582 30.5868 32.4582 29.5787V20.9849C32.4582 20.5447 32.4582 20.3245 32.4084 20.1174C32.3643 19.9337 32.2916 19.7581 32.1929 19.5971C32.0816 19.4154 31.926 19.2598 31.6146 18.9485L27.7082 15.042" stroke="white"/>
+                            <path d="M32.4582 22.958H27.5664C26.8706 22.958 26.5228 22.958 26.2609 23.1468C25.999 23.3355 25.889 23.6655 25.669 24.3256L24.9974 26.3405C24.7773 27.0005 24.6673 27.3305 24.4055 27.5193C24.1436 27.708 23.7957 27.708 23.1 27.708H14.8997C14.204 27.708 13.8561 27.708 13.5942 27.5193C13.3323 27.3305 13.2223 27.0005 13.0023 26.3405L12.3307 24.3256C12.1107 23.6655 12.0007 23.3355 11.7388 23.1468C11.4769 22.958 11.129 22.958 10.4333 22.958H5.5415" stroke="white"/>
+                            <path d="M27.7082 22.9583V12.5377C27.7082 12.2932 27.7082 12.1709 27.6805 12.0558C27.656 11.9537 27.6156 11.8562 27.5608 11.7667C27.499 11.6658 27.4125 11.5793 27.2395 11.4064L23.4268 7.59363C23.2538 7.42068 23.1674 7.3342 23.0665 7.27236C22.977 7.21753 22.8794 7.17713 22.7774 7.15263C22.6623 7.125 22.54 7.125 22.2954 7.125H12.6915C11.8514 7.125 11.4314 7.125 11.1105 7.28849C10.8283 7.4323 10.5988 7.66177 10.455 7.94401C10.2915 8.26488 10.2915 8.68492 10.2915 9.525V22.9583" stroke="white"/>
+                            <path d="M21.375 7.12467L21.375 11.858C21.375 12.4181 21.375 12.6981 21.484 12.912C21.5799 13.1002 21.7328 13.2531 21.921 13.349C22.1349 13.458 22.4149 13.458 22.975 13.458L27.7083 13.458" stroke="white"/>
+                            </svg>
+                            
+                    </div>
+                    <div class="step-title">Transaksi Diterima</div>
+                    <div class="step-desc">Pesanan telah diterima</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon" style="background-color: #ff6600;">
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M5.5415 13.19C5.5415 12.1649 5.5415 11.6524 5.74416 11.2622C5.91494 10.9335 6.18299 10.6654 6.51175 10.4946C6.90188 10.292 7.41442 10.292 8.4395 10.292H29.5602C30.5853 10.292 31.0978 10.292 31.4879 10.4946C31.8167 10.6654 32.0847 10.9335 32.2555 11.2622C32.4582 11.6524 32.4582 12.1649 32.4582 13.19V26.394C32.4582 27.4191 32.4582 27.9316 32.2555 28.3217C32.0847 28.6505 31.8167 28.9186 31.4879 29.0893C31.0978 29.292 30.5853 29.292 29.5602 29.292H8.4395C7.41442 29.292 6.90188 29.292 6.51175 29.0893C6.18299 28.9186 5.91494 28.6505 5.74416 28.3217C5.5415 27.9316 5.5415 27.4191 5.5415 26.394V13.19Z" stroke="white"/> <path d="M5.5415 16.625L32.4582 16.625" stroke="white" stroke-linecap="round"/> <circle cx="10.2917" cy="24.5417" r="0.5" fill="white" stroke="white" stroke-width="0.583333"/> </svg>
+                    </div>
+                    <div class="step-title">Pembayaran</div>
+                    <div class="step-desc">Silahkan melakukan pembayaran</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 6.5L13 2.6" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M13 23.4004L13 20.8004" stroke="#8D8787" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20.7998 13L23.3998 13" stroke="#8D8787" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2.6001 13L6.5001 13" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M19.4209 6.5791L20.3401 5.65986" stroke="#8D8787" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.646 20.3545L7.48447 18.516" stroke="#8D8787" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18.5156 18.5156L20.3541 20.3541" stroke="#8D8787" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5.64648 5.64648L8.4042 8.4042" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            
+                    </div>
+                    <div class="step-title">Sedang Diproses</div>
+                    <div class="step-desc">Transaksi sedang diproses</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 33.25C22.2968 33.25 25.4916 32.1069 28.0401 30.0154C30.5886 27.9239 32.333 25.0135 32.9762 21.78C33.6194 18.5466 33.1215 15.1901 31.5674 12.2826C30.0133 9.37507 27.4991 7.09635 24.4532 5.83472C21.4074 4.57308 18.0183 4.40659 14.8634 5.3636C11.7086 6.32061 8.98317 8.34192 7.15156 11.0831C5.31995 13.8243 4.49547 17.1158 4.81862 20.3967C5.14176 23.6777 6.59253 26.7451 8.92373 29.0763" stroke="white" stroke-linecap="round"/>
+                            <path d="M25.3335 15.833L18.8189 23.6506C18.1633 24.4372 17.8355 24.8306 17.3949 24.8506C16.9544 24.8706 16.5923 24.5085 15.8682 23.7844L12.6668 20.583" stroke="white" stroke-linecap="round"/>
+                            </svg>                            
+                            
+                    </div>
+                    <div class="step-title">Transaksi Selesai</div>
+                    <div class="step-desc">Transaksi telah selesai dilakukan</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Timer -->
+        <div class="timer">
+            2 Jam : 27 Menit : 48 Detik
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Account Info -->
+            <div class="info-card">
+                <h3 class="card-title">Informasi Akun</h3>
+                <div class="account-info">
+                    <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
+                        <div class="game-image">
+                            <img src="/Pembayaran/suyou.png" alt="Mobile Legends">
+                        </div>
+                        <div class="game-title">Mobile Legends Bang Bang<br>150 Diamond</div>
+                    </div>
+                    <div class="account-details">
+                        <div class="detail-row">
+                            <div class="detail-label">Nickname</div>
+                            <div class="detail-value">: bem1ne</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">ID</div>
+                            <div class="detail-value">: 1820034551</div>
+                        </div>
+                        <div class="detail-row">
+                            <div class="detail-label">Server</div>
+                            <div class="detail-value">: 2932</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Info -->
+            <div class="info-card">
+                <h3 class="card-title">Metode Pembayaran<br>QRIS (Satu Kode QR untuk Semua)</h3>
+                <div class="payment-info">
+                    <div class="detail-row">
+                        <div class="detail-label">Nomor Invoice</div>
+                        <div class="detail-value">: WEJRWIEFMW09234 
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 0 0 0 6.5 4h3A1.5 0 0 0 11 2.5v-1A1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Status Pembayaran</div>
+                        <div class="detail-value">: <span class="status-label status-unpaid">UNPAID</span></div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Status Transaksi</div>
+                        <div class="detail-value">: <span id="transactionStatus" class="status-label status-pending">PENDING</span></div>
+                    </div>
+                    <div class="detail-row">
+                        <div class="detail-label">Pesan</div>
+                        <div class="detail-value">: Silahkan untuk melakukan pembayaran dengan metode yang kamu pilih.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Payment Method -->
+        <div class="payment-method">
+            <div class="method-header">
+                <div class="method-title">Rincian Pembayaran</div>
+                <div class="method-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Payment Details -->
+            <div class="payment-details">
+                <div class="detail-item">
+                    <div>Harga</div>
+                    <div>Rp. 100.000</div>
+                </div>
+                <div class="detail-item">
+                    <div>Jumlah</div>
+                    <div>1x</div>
+                </div>
+                <div class="detail-item">
+                    <div>Subtotal</div>
+                    <div>Rp. 100.000</div>
+                </div>
+                <div class="detail-item">
+                    <div>Biaya</div>
+                    <div>Rp. 1000</div>
+                </div>
+                
+                <div class="total-payment">
+                    <div>Total Pembayaran</div>
+                    <div style="display: flex; align-items: center;">
+                        Rp. 101.000
+                        <div class="copy-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 0 0 0 6.5 4h3A1.5 0 0 0 11 2.5v-1A1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- QR Code Section -->
+        <div class="qr-section">
+            <div class="qr-code">
+                <img src="/Pembayaran/wsa qr.png" alt="QR Code">
+            </div>
+            <button class="download-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                </svg>
+                Unduh kode QR
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p>© 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for status change -->
+    <script>
+        // Function to simulate transaction processing
+        function simulateProcessing() {
+            // Get the status element
+            const statusElement = document.getElementById('transactionStatus');
+            
+            // Set a timeout to change the status after 10 seconds
+            setTimeout(() => {
+                // Change the text and class
+                statusElement.textContent = 'ACTIVE';
+                statusElement.classList.remove('status-pending');
+                statusElement.classList.add('status-success');
+                
+                // Update the progress steps
+                const processingStep = document.querySelector('.progress-steps .step:nth-child(3) .step-icon');
+                processingStep.style.backgroundColor = '#4CAF50';
+                
+                // Show an alert
+                alert('Status transaksi telah berubah menjadi ACTIVE!');
+            }, 10000); // 10 seconds
+        }
+        
+        // Add a button to manually trigger the status change
+        const paymentSection = document.querySelector('.qr-section');
+        const triggerButton = document.createElement('button');
+        <!-- triggerButton.className = 'download-btn';
+        triggerButton.style.marginTop = '10px';
+        triggerButton.style.backgroundColor = '#4CAF50'; 
+        triggerButton.textContent = 'Simulasi Pembayaran Berhasil'; -->
+        triggerButton.onclick = simulateProcessing;
+        paymentSection.appendChild(triggerButton);
+        
+    </script>
+</body>
+</html>
+
