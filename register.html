@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSA TOPUP - Daftar Akun</title>
+    <link rel="stylesheet" type="text/css" href="register-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="logo-text" style="display: flex; align-items: center;">
+                <img src="Element/LOGOWSA.PNG" alt="WSA TOPUP LOGO" style="margin-right: 10px;">
+                <div class="text-beside-logo">
+                    <h6>WSA TOPUP</h6>
+                    <p>MAKE YOUR LEVEL UP</p>
+                </div>
+            </div>    
+            <div class="register-title">
+                <h3>Daftar Akun</h3>
+                <p>Daftar akun dengan mengisi form di bawah</p>
+            </div>
+            <form action="#" method="post">
+                <div class="input-group">
+                    <label for="name">Nama</label>
+                    <input type="text" name="name" id="name" placeholder="Masukkan nama lengkap" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">No Handphone</label>
+                    <input type="text" name="phone" id="phone" placeholder="Masukkan nomor handphone" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Masukkan email" required>
+                </div>
+
+                <div class="input-group password-container">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Masukkan password" required>
+                    <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
+                </div>
+
+                <div class="input-group password-container">
+                    <label for="confirm-password">Konfirmasi Password</label>
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Masukkan ulang password" required>
+                    <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
+                </div>
+
+                <button type="submit" class="btn-register">Daftar Sekarang</button>
+                
+                <p class="login-text">Sudah punya akun?</p>
+                <a href="Login.html" class="btn-login">Masuk</a>
+            </form>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya</p>
+        </footer>
+    </div>
+
+    <script src="Script.js"></script>
+</body>
+</html>
