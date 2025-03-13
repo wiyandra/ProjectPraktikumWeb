@@ -1,0 +1,245 @@
+/* Reset Default */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container Styling */
+.login-container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    min-width: 300px;
+    max-height: 1000px;
+    min-width: 500px;
+}
+
+.login-card {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+}
+
+/* Logo & Title */
+.logo-text img {
+    max-width: 100%;
+    width: 80px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.text-beside-logo h6, p {
+    text-align: left;
+    color: #ff7700;
+    font-size: 12px;
+}
+
+h4 {
+    color: #fff;
+    font-size: 20px;
+    margin: bottom 15px;
+    text-align: left;
+}
+
+h5 {
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+/* Form Styling */
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #444;
+    color: #fff;
+    font-size: 16px;
+}
+
+.input-group input:focus {
+    border-bottom: 2px solid #ff7700;
+}
+
+/* Password Container */
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    cursor: pointer;
+}
+
+/* Button Styling */
+.btn-login, .btn-register {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    background: #ff7700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-login {
+    color: #ffffff;
+    background: #FF7700;
+    border: 1px solid #ff7700;
+}
+
+.btn-login:hover {
+    opacity: 0.7;
+}
+
+.btn-register {
+    background: #ff7700;
+}
+
+.btn-register:hover {
+    background: #ff7700;
+}
+
+/* Option Styling */
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.option label {
+    color: #fff;
+    font-size: 14px;
+}
+
+.forgot-password {
+    color: #ff7700;
+    font-size: 14px;
+}
+
+/* Hover and Active Effects for Button */
+.btn-login {
+    width: 100%;
+    height: 49px;
+    margin-top: 20px;
+    cursor: pointer;
+    background: #FF7700;
+    color: #ffffff;
+    font-family: "Inter";
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+}
+
+.btn-login:hover {
+    background: #FF7700;
+    color: white;
+}
+
+.btn-login:active {
+    opacity: 0.2;
+}
+
+.register-text {
+    text-align: left;
+    font-family: "Inter";
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.btn-register {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: 10px solid #ff7700;
+    color: #ffffff;
+    font-family: "Inter";
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    border: 1px solid  #FF7700;
+    transition: all 0.3s;
+    border-radius: 5px;
+}
+
+.btn-register:hover {
+    background: #FF7700;
+}
+
+.btn-register:active {
+    opacity: 0.3;
+}
+
+/* Footer */
+footer p {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 12px;
+    color: #fff;
+}
+
+/* Media Queries */
+@media (max-width: 1000px) {
+    .login-card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .login-card {
+        width: 100%;
+        padding: 35px;
+        box-shadow: none;
+    }
+
+    .logo-text img {
+        max-width: 80px;
+    }
+
+    .login-container {
+        background: none;
+    }
+}

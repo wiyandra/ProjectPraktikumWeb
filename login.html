@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSA TOPUP - Masuk Akun</title>
+    
+    <!-- Link ke file CSS eksternal -->
+    <link rel="stylesheet" type="text/css" href="login-style.css">
+    
+    <!-- Font Google untuk tampilan lebih menarik -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <!-- Logo dan branding -->
+            <div class="logo-text" style="display: flex; align-items: center;">
+                <img src="Element/LOGOWSA.PNG" alt="WSA TOPUP LOGO" style="margin-right: 10px;">
+                <div class="text-beside-logo">
+                    <h6>WSA TOPUP</h6>
+                    <p>MAKE YOUR LEVEL UP</p>
+                </div>
+            </div>
+            
+            <!-- Judul halaman login -->
+            <h4>Masuk Akun</h4>
+            <h5>Masuk menggunakan akun terdaftar milikmu.</h5>
+
+            <!-- Formulir login -->
+            <form action="http://localhost/WSAStore/login.html#" method="post">
+                <!-- Input untuk username atau email -->
+                <div class="input-group">
+                    <label for="username">Username/Email</label>
+                    <input type="text" name="username" id="username" placeholder="Masukkan username atau email" required>
+                </div>
+
+                <!-- Input untuk password -->
+                <div class="input-group password-container">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Masukkan password" required>
+                    <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
+                </div>
+
+                <!-- Opsi tambahan: Ingat saya dan lupa password -->
+                <div class="option">
+                    <label>
+                        <input type="checkbox" name="remember"> Ingat Saya
+                    </label>
+                    <a href="http://localhost/WSAStore/Login.html#" class="forgot-password">Lupa Password?</a>
+                </div>
+
+                <!-- Tombol login -->
+                <a href="Homepage/Home.html" class="btn-login">Masuk</a>
+                
+                <!-- Tautan ke halaman pendaftaran -->
+                <div>
+                    <p class="register-text">Belum punya akun?</p>
+                    <a href="Register.html" target="_blank" class="btn-register">Daftar Sekarang</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer halaman -->
+        <footer>
+            <p class="copyrigth">&copy; 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya</p>
+        </footer>
+    </div>
+
+    <!-- Link ke file JavaScript eksternal -->
+    <script src="Script.js"></script>
+</body>
+</html>
