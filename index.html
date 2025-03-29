@@ -132,14 +132,14 @@
                 <!-- Product Grid -->
                 <div class="product-grid" id="product-container"></div>
             
-            <div class="pagination">
+            <!--div class="pagination">
                 <span class="page-info">HALAMAN</span>
                 <div class="page-numbers">
                     <a href="#" class="page-number active">1</a>
                     <a href="#" class="page-number">2</a>
                     <a href="#" class="page-number">3</a>
                 </div>
-            </div>
+            </div -->
         </div>
     </section>
 
@@ -149,7 +149,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="/placeholder.svg?height=60&width=60" alt="WSA Logo" class="footer-logo-img">
+                        <img src="/Element/LOGOWSA.PNG" alt="WSA Logo" class="footer-logo-img" style="width: 150px; height: auto;">
                     </div>
                     <div class="footer-slogan">
                         <h3>WSA TOPUP</h3>
@@ -176,11 +176,11 @@
                         <ul class="social-links">
                             <li>
                                 <i class="fab fa-instagram"></i>
-                                <a href="#">@wsa.id</a>
+                                <a href="https://www.instagram.com/wsa.topup/">@wsa.topup</a>
                             </li>
                             <li>
                                 <i class="fab fa-youtube"></i>
-                                <a href="#">YouTube WSA</a>
+                                <a href="https://www.youtube.com/@WiyandraSFL">YouTube WSA</a>
                             </li>
                             <li>
                                 <i class="fab fa-tiktok"></i>
@@ -210,20 +210,20 @@
     // Data Produk dengan Nama Berbeda
     const products = {
         topup: [
-            { img: "/ListGames/MLList.png", name: "Diamond Mobile Legends", value: "5v" },
-            { img: "/ListGames/PUBGMList.png", name: "UC PUBG Mobile", value: "5v" },
-            { img: "/ListGames/ValoList.png", name: "Valorant Points", value: "5v" },
-            { img: "/ListGames/GIList.png", name: "Genesis Crystals Genshin", value: "5v" },
-            { img: "/ListGames/PBList.png", name: "Point Blank Cash", value: "5v" },
-            { img: "https://via.placeholder.com/100", name: "Shell Garena", value: "5v" },
-            { img: "/ListGames/FFList.png", name: "Free Fire Diamonds", value: "5v" },
-            { img: "/ListGames/HOKList.png", name: "Honor of Kings Tokens", value: "5v" },
-            { img: "https://via.placeholder.com/100", name: "Apex Legends Coins", value: "5v" },
-            { img: "https://via.placeholder.com/100", name: "COD Mobile CP", value: "5v" }
+            { img: "/ListGames/MLList.png", name: "Diamond Mobile Legends" },
+            { img: "/ListGames/PUBGMList.png", name: "UC PUBG Mobile" },
+            { img: "/ListGames/ValoList.png", name: "Valorant Points" },
+            { img: "/ListGames/GIList.png", name: "Genesis Crystals Genshin" },
+            { img: "/ListGames/PBList.png", name: "Point Blank Cash" },
+            { img: "https://via.placeholder.com/100", name: "Shell Garena" },
+            { img: "/ListGames/FFList.png", name: "Free Fire Diamonds" },
+            { img: "/ListGames/HOKList.png", name: "Honor of Kings Tokens" },
+            { img: "https://via.placeholder.com/100", name: "Apex Legends Coins" },
+            { img: "https://via.placeholder.com/100", name: "COD Mobile CP" }
         ],
         joki: [
-            { img: "/Element/Joki ML HD.jpg", name: "Joki Rank Mobile Legends", value: "5v" },
-            { img: "/Element/Joki Valorant HD.png", name: "Joki Rank Valorant", value: "5v" }
+            { img: "/Element/Joki ML HD.jpg", name: "Joki Rank Mobile Legends" },
+            { img: "/Element/Joki Valorant HD.png", name: "Joki Rank Valorant" }
         ]
     };
 
@@ -238,7 +238,6 @@
             .map(product => `
                 <div class="product-card">
                     <img src="${product.img}" alt="${product.name}" class="product-img">
-                    <div class="product-value">${product.value}</div>
                 </div>
             `).join("");
 
