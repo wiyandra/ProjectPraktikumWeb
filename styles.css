@@ -78,7 +78,7 @@ nav ul li a:hover {
 }
 
 .search-bar input {
-    padding: 8px 15px 8px 35px; /* Increased left padding to make room for the icon */
+    padding: 8px 15px 8px 35px;
     border-radius: 20px;
     border: none;
     background-color: #fff;
@@ -99,20 +99,37 @@ nav ul li a:hover {
 
 /* Hero Banner Styles */
 .hero-banner {
-    padding: 20px 0;
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+    margin-top: 20px;
 }
 
 .banner-slider {
+    display: flex;
     position: relative;
-    overflow: hidden;
-    border-radius: 10px;
+    width: 100%;
+    height: 100%;
 }
 
-.banner-img {
+.banner-slide {
+    flex: 0 0 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 10px;
+    height: 100%;
+}
+
+.banner-slide img {
+    border-radius: 5px;
+}
+
+.banner-slide.active {
+    opacity: 1;
+    position: relative;
 }
 
 /* Popular Transactions Styles */
@@ -157,11 +174,13 @@ nav ul li a:hover {
     transition: transform 0.3s, background-color 0.3s;
     cursor: pointer;
     overflow: hidden;
+    border: 2px solid black;
 }
 
 .game-card:hover {
     transform: translateY(-5px);
     background-color: #333;
+    border-color: #ffa500;
 }
 
 .game-icon {
@@ -213,12 +232,14 @@ nav ul li a:hover {
     background-color: #222;
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.3s, border-color 0.3s;
     cursor: pointer;
+    border: 2px solid transparent;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
+    border-color: #ffa500;
 }
 
 .product-img {
@@ -475,7 +496,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=number] {
-    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 footer {
@@ -681,7 +702,6 @@ table td {
     width: 100%;
     border-collapse: separate; /* Changed from collapse to separate */
     border-spacing: 0; /* Ensures no spacing between cells */
-    border-radius: 15px; /* Added border-radius for the table */
     overflow: hidden; /* Ensures the border-radius is applied correctly */
 }
 

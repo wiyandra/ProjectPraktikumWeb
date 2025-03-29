@@ -36,13 +36,39 @@
     <!-- Hero Banner Section -->
     <section class="hero-banner">
         <div class="container">
-            <div class="banner-slider">
+            <div class="banner-slider" id="banner-slider">
                 <div class="banner-slide active">
-                    <img src="/placeholder.svg?height=300&width=1000" alt="Game Banner" class="banner-img">
+                    <img src="/Element/Banner/banner1.jpg" alt="Game Banner 1" class="banner-img">
+                </div>
+                <div class="banner-slide">
+                    <img src="/Element/Banner/banner2.jpg" alt="Game Banner 2" class="banner-img">
+                </div>
+                <div class="banner-slide">
+                    <img src="/Element/Banner/banner3.jpg" alt="Game Banner 3" class="banner-img">
                 </div>
             </div>
         </div>
     </section>
+    
+    <script>
+        // JavaScript untuk banner slider
+        const slides = document.querySelectorAll('.banner-slide');
+        let currentSlide = 0;
+    
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+    
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+    
+        // Pindah slide setiap 5 detik
+        setInterval(nextSlide, 5000);
+    </script>
 
     <!-- Popular Transactions Section -->
     <section class="popular-transactions">
@@ -98,56 +124,13 @@
     <!-- Product Filter Section -->
     <section class="product-filter">
         <div class="container">
-            <div class="filter-buttons">
-                <button class="filter-btn active">PALING LARIS</button>
-                <button class="filter-btn">HARGA TERMURAH</button>
+            <div class="filter-buttons" id="filter-container">
+                <button class="filter-btn active" data-category="topup">TOPUP GAMES</button>
+                <button class="filter-btn" data-category="joki">JOKI GAMES</button>
             </div>
-            
-            <div class="product-grid">
-                <!-- Row 1 -->
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                
-                <!-- Row 2 -->
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-            </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid" id="product-container"></div>
             
             <div class="pagination">
                 <span class="page-info">HALAMAN</span>
@@ -223,5 +206,56 @@
           </div>
       </div>
   </footer>
+  <script>
+    // Data Produk dengan Nama Berbeda
+    const products = {
+        topup: [
+            { img: "/ListGames/MLList.png", name: "Diamond Mobile Legends", value: "5v" },
+            { img: "/ListGames/PUBGMList.png", name: "UC PUBG Mobile", value: "5v" },
+            { img: "/ListGames/ValoList.png", name: "Valorant Points", value: "5v" },
+            { img: "/ListGames/GIList.png", name: "Genesis Crystals Genshin", value: "5v" },
+            { img: "/ListGames/PBList.png", name: "Point Blank Cash", value: "5v" },
+            { img: "https://via.placeholder.com/100", name: "Shell Garena", value: "5v" },
+            { img: "/ListGames/FFList.png", name: "Free Fire Diamonds", value: "5v" },
+            { img: "/ListGames/HOKList.png", name: "Honor of Kings Tokens", value: "5v" },
+            { img: "https://via.placeholder.com/100", name: "Apex Legends Coins", value: "5v" },
+            { img: "https://via.placeholder.com/100", name: "COD Mobile CP", value: "5v" }
+        ],
+        joki: [
+            { img: "/Element/Joki ML HD.jpg", name: "Joki Rank Mobile Legends", value: "5v" },
+            { img: "/Element/Joki Valorant HD.png", name: "Joki Rank Valorant", value: "5v" }
+        ]
+    };
+
+    // Elemen DOM
+    const productContainer = document.getElementById("product-container");
+    const filterContainer = document.getElementById("filter-container");
+
+    // Fungsi untuk menampilkan produk berdasarkan kategori
+    function showProducts(category) {
+        const selectedProducts = products[category];
+        productContainer.innerHTML = selectedProducts
+            .map(product => `
+                <div class="product-card">
+                    <img src="${product.img}" alt="${product.name}" class="product-img">
+                    <div class="product-value">${product.value}</div>
+                </div>
+            `).join("");
+
+        // Update tombol aktif
+        document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+        document.querySelector(`[data-category="${category}"]`).classList.add("active");
+    }
+
+    // Event listener untuk tombol filter (event delegation)
+    filterContainer.addEventListener("click", (event) => {
+        if (event.target.classList.contains("filter-btn")) {
+            showProducts(event.target.dataset.category);
+        }
+    });
+
+    // Tampilkan produk TOPUP GAMES pertama kali
+    showProducts("topup");
+</script>
 </body>
 </html>
