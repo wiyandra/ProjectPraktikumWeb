@@ -1,0 +1,631 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Header Styles */
+header {
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+    height:110px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-img {
+    height: 100px;
+    width: 100px;
+}
+
+nav ul {
+    display: flex;
+    padding-left: 50px;
+}
+
+nav ul li {
+    margin-right: 100px;
+}
+
+nav ul li a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffa500;
+}
+
+.search-profile {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    margin-right: 15px;
+    position: relative;
+}
+
+.search-bar input {
+    padding: 8px 15px 8px 35px; /* Increased left padding to make room for the icon */
+    border-radius: 20px;
+    border: none;
+    background-color: #fff;
+    color: #333;
+    width: 200px;
+    background-image: url("Image/search.png");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 16px;
+}
+
+.profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Hero Banner Styles */
+.hero-banner {
+    padding: 20px 0;
+}
+
+.banner-slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* Popular Transactions Styles */
+.popular-transactions {
+    padding: 30px 0;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.star-icon {
+    color: #ffa500;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.section-header h2 {
+    color: #ffa500;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.game-card {
+    position: relative;
+    background-color: #222;
+    background-image: url("Element/Bahan-Bahan/BGGameCard.png");
+    background-size: cover;
+    background-position: right;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s, background-color 0.3s;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    background-color: #333;
+}
+
+.game-icon {
+    width: 70px;
+    height: 70px;
+    margin-right: 15px;
+    border-radius: 8px;
+}
+
+.game-name {
+    font-weight: bold;
+}
+
+/* Product Filter Styles */
+.product-filter {
+    padding: 30px 0;
+}
+
+.filter-buttons {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.filter-btn {
+    background-color: #222;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: #ffa500;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.product-card {
+    position: relative;
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-img {
+    width: 100%;
+    display: block;
+}
+
+.product-value {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ffa500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.page-info {
+    margin-right: 10px;
+    color: #999;
+}
+
+.page-numbers {
+    display: flex;
+}
+
+.page-number {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: #222;
+    transition: background-color 0.3s;
+}
+
+.page-number.active, .page-number:hover {
+    background-color: #ffa500;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #1a1a1a;
+    padding: 40px 0 20px;
+    border-top: 1px solid #333;
+    margin-top: 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.footer-brand {
+    flex: 0 0 30%;
+}
+
+.footer-logo-img {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.footer-slogan h3 {
+    color: #ffa500;
+    margin-bottom: 5px;
+}
+
+.footer-slogan p {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-description {
+    color: #999;
+    font-size: 14px;
+}
+
+.footer-links {
+    flex: 0 0 65%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-column h4 {
+    color: #ffa500;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #ffa500;
+}
+
+.social-links li, .footer-column ul li {
+    display: flex;
+    align-items: center;
+}
+
+.social-links li i, .footer-column ul li i {
+    margin-right: 10px;
+    color: #ffa500;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #999;
+    font-size: 14px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .footer-brand {
+        flex: 0 0 100%;
+        margin-bottom: 30px;
+    }
+    
+    .footer-links {
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+    }
+    
+    nav {
+        margin: 15px 0;
+    }
+    
+    .search-profile {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-links {
+        flex-direction: column;
+    }
+    
+    .footer-column {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    nav ul {
+        flex-wrap: wrap;
+    }
+    
+    nav ul li {
+        margin-bottom: 10px;
+    }
+    
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Kalkulator Win Rate Styles */
+.kalkulator-section {
+    padding: 30px 0 200px;
+    text-align: center;
+}
+
+.kalkulator {
+    display: inline-block;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.kalkulator input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #333;
+    color: #fff;
+}
+
+.kalkulator button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #ffa500;
+    color: #000000;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-top: 30px;
+}
+
+.kalkulator button:hover {
+    background-color: #ff8c00;
+}
+
+.kalkulator p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ffa500;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+footer {
+    background-color: #1a1a1a;
+    padding: 40px 0 20px;
+    border-top: 1px solid #333;
+    margin-top: 30px;
+    text-align: center;
+    color: #999;
+}
+
+/* Riwayat Transaksi Section */
+.riwayat-transaksi {
+    padding: 20px 0;
+}
+
+.riwayat-transaksi h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.table-header button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.table-header button.active {
+    background-color: #ffa500;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #af8049;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #55492f;
+}
+
+table td {
+    background-color: #333;
+}
+.cek-pembelian-section {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.cek-pembelian {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cek-pembelian h3 {
+    color: #ffa500;
+    margin-bottom: 10px;
+}
+
+.cek-pembelian input {
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #222;
+    color: #fff;
+}
+
+.cek-pembelian button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ffa500;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.cek-pembelian button:hover {
+    background-color: #ff8c00;
+}
+
+.table-container {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.table-header button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.table-header button.active {
+    background-color: #ffa500;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #af8049;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background-color: #55492f;
+}
+
+table td {
+    background-color: #333;
+}
