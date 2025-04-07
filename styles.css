@@ -767,3 +767,94 @@ table td {
 .leaderboard-table tr:hover td {
     background-color: #444;
 }
+
+
+@import url("https://fonts.googleapis.com/css?family=Inter:700,600,400");
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #1a1a1a;
+}
+
+.profilehtml {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  margin: 0 auto;
+}
+
+.profilehtml .img {
+  position: absolute;
+  width: 114px;
+  height: 114px;
+  top: 237px;
+  left: 1465px;
+}
+
+.profilehtml .text-wrapper-5 {
+  position: absolute;
+  height: 36px;
+  top: 256px;
+  left: 375px;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 30px;
+  white-space: nowrap;
+}
+
+.profilehtml .text-wrapper-10 {
+  position: absolute;
+  height: 24px;
+  top: 319px;
+  left: 375px;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.text-label {
+  position: absolute;
+  height: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 25px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.input-field {
+  position: absolute;
+  width: 589px;
+  height: 52px;
+  background-color: #424242;
+  color: white;
+  font-size: 20px;
+  padding-left: 15px;
+  border: none;
+  border-radius: 15px;
+}
+
+.input-field::placeholder {
+  color: #bbbbbb;
+}
+
+.btn {
+  position: absolute;
+  height: 52px;
+  background-color: #ff7700;
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: 15px;
+  width: 198px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #e06600;
+}
