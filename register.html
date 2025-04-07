@@ -23,12 +23,18 @@
                 <h3>Daftar Akun</h3>
                 <p>Daftar akun dengan mengisi form di bawah</p>
             </div>
-            <form action="#" method="post">
-                <div class="input-group">
-                    <label for="name">Nama</label>
-                    <input type="text" name="name" id="name" placeholder="Masukkan nama lengkap" required>
-                </div>
+            <form action="register.php" method="POST">
+                <div class="input-row">
+                    <div class="input-group half">
+                        <label for="nama">Nama</label>
+                        <input type="text" name="nama" id="nama" placeholder="Masukkan nama lengkap" required>
+                    </div>
 
+                    <div class="input-group half">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" placeholder="Masukkan username" required>
+                    </div>
+                </div>
                 <div class="input-group">
                     <label for="phone">No Handphone</label>
                     <input type="text" name="phone" id="phone" placeholder="Masukkan nomor handphone" required>
@@ -39,22 +45,24 @@
                     <input type="email" name="email" id="email" placeholder="Masukkan email" required>
                 </div>
 
-                <div class="input-group password-container">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Masukkan password" required>
-                    <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
-                </div>
+                <div class="input-row">
+                    <div class="input-group half password-container">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" placeholder="Masukkan password" required>
+                        <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
+                    </div>
 
-                <div class="input-group password-container">
-                    <label for="confirm-password">Konfirmasi Password</label>
-                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Masukkan ulang password" required>
-                    <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
+                    <div class="input-group half password-container">
+                        <label for="confirm_password">Konfirmasi Password</label>
+                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Ulangi password" required>
+                        <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
+                    </div>
                 </div>
 
                 <button type="submit" class="btn-register">Daftar Sekarang</button>
                 
                 <p class="login-text">Sudah punya akun?</p>
-                <a href="Login.html" class="btn-login">Masuk</a>
+                <a href="login.html" class="btn-login">Masuk</a>
             </form>
         </div>
 
