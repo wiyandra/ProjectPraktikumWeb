@@ -78,17 +78,56 @@ nav ul li a:hover {
 }
 
 .search-bar input {
-    padding: 8px 15px 8px 35px; /* Increased left padding to make room for the icon */
-    border-radius: 20px;
-    border: none;
+    padding: 10px 15px 10px 40px;
+    border-radius: 25px;
+    border: 2px solid #ddd;
     background-color: #fff;
     color: #333;
-    width: 200px;
-    background-image: url("Image/search.png");
+    width: 220px;
+    outline: none;
+    transition: 0.3s;
+    font-size: 14px;
+    background-image: url("Element/Icon/search.png");
     background-repeat: no-repeat;
-    background-position: 10px center;
-    background-size: 16px;
+    background-position: 12px center;
+    background-size: 18px;
 }
+
+.search-bar input:focus {
+    border-color: #007bff;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Styling untuk daftar hasil pencarian */
+#searchResults {
+    position: absolute;
+    background: white;
+    border-radius: 8px;
+    width: 220px;
+    list-style: none;
+    padding: 5px 0;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Styling untuk setiap item hasil pencarian */
+.search-result-item {
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+.search-result-item:hover {
+    background: #007bff;
+    color: white;
+}
+
 
 .profile-img {
     width: 30px;
@@ -99,20 +138,37 @@ nav ul li a:hover {
 
 /* Hero Banner Styles */
 .hero-banner {
-    padding: 20px 0;
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+    margin-top: 20px;
 }
 
 .banner-slider {
+    display: flex;
     position: relative;
-    overflow: hidden;
-    border-radius: 10px;
+    width: 100%;
+    height: 100%;
 }
 
-.banner-img {
+.banner-slide {
+    flex: 0 0 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 10px;
+    height: 100%;
+}
+
+.banner-slide img {
+    border-radius: 5px;
+}
+
+.banner-slide.active {
+    opacity: 1;
+    position: relative;
 }
 
 /* Popular Transactions Styles */
@@ -157,11 +213,13 @@ nav ul li a:hover {
     transition: transform 0.3s, background-color 0.3s;
     cursor: pointer;
     overflow: hidden;
+    border: 2px solid black;
 }
 
 .game-card:hover {
     transform: translateY(-5px);
     background-color: #333;
+    border-color: #ffa500;
 }
 
 .game-icon {
@@ -213,12 +271,14 @@ nav ul li a:hover {
     background-color: #222;
     border-radius: 8px;
     overflow: hidden;
-    transition: transform 0.3s;
+    transition: transform 0.3s, border-color 0.3s;
     cursor: pointer;
+    border: 2px solid transparent;
 }
 
 .product-card:hover {
     transform: translateY(-5px);
+    border-color: #ffa500;
 }
 
 .product-img {
@@ -475,8 +535,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 input[type=number] {
-    -moz-appearance: textfield;
-    appearance: textfield; /* Standard property */
+    appearance: textfield;
 }
 
 footer {
@@ -629,4 +688,173 @@ table th {
 
 table td {
     background-color: #333;
+}
+
+/* Leaderboard Styles */
+.testimonials-section {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.testimonials-section h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.leaderboard-container {
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.leaderboard-container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.leaderboard-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.leaderboard-header button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.leaderboard-header button.active {
+    background-color: #ffa500;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: separate; /* Changed from collapse to separate */
+    border-spacing: 0; /* Ensures no spacing between cells */
+    overflow: hidden; /* Ensures the border-radius is applied correctly */
+}
+
+.leaderboard-table th, .leaderboard-table td {
+    border: 1px solid #af8049;
+    padding: 10px;
+    text-align: left;
+}
+
+.leaderboard-table th {
+    background-color: #55492f;
+    color: #ffffff;
+}
+
+.leaderboard-table td {
+    background-color: #333;
+    color: #ffffff;
+}
+
+.leaderboard-table tr:nth-child(even) td {
+    background-color: #2a2a2a;
+}
+
+.leaderboard-table tr:hover td {
+    background-color: #444;
+}
+
+
+@import url("https://fonts.googleapis.com/css?family=Inter:700,600,400");
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #1a1a1a;
+}
+
+.profilehtml {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  margin: 0 auto;
+}
+
+.profilehtml .img {
+  position: absolute;
+  width: 114px;
+  height: 114px;
+  top: 237px;
+  left: 1465px;
+}
+
+.profilehtml .text-wrapper-5 {
+  position: absolute;
+  height: 36px;
+  top: 256px;
+  left: 375px;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 30px;
+  white-space: nowrap;
+}
+
+.profilehtml .text-wrapper-10 {
+  position: absolute;
+  height: 24px;
+  top: 319px;
+  left: 375px;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 20px;
+  white-space: nowrap;
+}
+
+.text-label {
+  position: absolute;
+  height: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 25px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.input-field {
+  position: absolute;
+  width: 589px;
+  height: 52px;
+  background-color: #424242;
+  color: white;
+  font-size: 20px;
+  padding-left: 15px;
+  border: none;
+  border-radius: 15px;
+}
+
+.input-field::placeholder {
+  color: #bbbbbb;
+}
+
+.btn {
+  position: absolute;
+  height: 52px;
+  background-color: #ff7700;
+  color: #ffffff;
+  font-size: 26px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: 15px;
+  width: 198px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #e06600;
 }
