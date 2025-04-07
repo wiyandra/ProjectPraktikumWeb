@@ -89,6 +89,15 @@ body {
     border-bottom: 2px solid #ff7700;
 }
 
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.input-group.half {
+    flex: 1;
+}
 /* Password Container */
 .password-container {
     position: relative;
