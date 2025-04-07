@@ -795,7 +795,7 @@ body {
 .profilehtml .text-wrapper-5 {
   position: absolute;
   height: 36px;
-  top: 256px;
+  top: 156px;
   left: 375px;
   font-weight: 700;
   color: #ffffff;
@@ -806,7 +806,7 @@ body {
 .profilehtml .text-wrapper-10 {
   position: absolute;
   height: 24px;
-  top: 319px;
+  top: 219px;
   left: 375px;
   font-weight: 400;
   color: #ffffff;
@@ -846,7 +846,7 @@ body {
   height: 52px;
   background-color: #ff7700;
   color: #ffffff;
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 600;
   text-align: center;
   border: none;
