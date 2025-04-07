@@ -12,22 +12,27 @@
     <header>
       <div class="container">
           <div class="logo">
+            <a href="index.html">
               <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
+            </a>
           </div>
           <nav>
               <ul>
                   <li><a href="index.html">Dashboard</a></li>
-                  <li><a href="#">Leaderboard</a></li>
+                  <li><a href="leaderboard.html">Leaderboard</a></li>
                   <li><a href="riwayat-page.html">Riwayat</a></li>
                   <li><a href="kalkulator-page.html">Kalkulator</a></li>
               </ul>
           </nav>
           <div class="search-profile">
               <div class="search-bar">
-                  <input type="text" placeholder="Search...">
+                  <input type="text" id="searchInput" placeholder="Search..." autocomplete="off">
+                  <ul id="searchResults"></ul>
               </div>
               <div class="profile">
+                <a href="profil.html">
                   <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img">
+                </a>
               </div>
           </div>
       </div>
@@ -36,13 +41,39 @@
     <!-- Hero Banner Section -->
     <section class="hero-banner">
         <div class="container">
-            <div class="banner-slider">
+            <div class="banner-slider" id="banner-slider">
                 <div class="banner-slide active">
-                    <img src="/placeholder.svg?height=300&width=1000" alt="Game Banner" class="banner-img">
+                    <img src="/Element/Banner/banner1.jpg" alt="Game Banner 1" class="banner-img">
+                </div>
+                <div class="banner-slide">
+                    <img src="/Element/Banner/banner2.jpg" alt="Game Banner 2" class="banner-img">
+                </div>
+                <div class="banner-slide">
+                    <img src="/Element/Banner/banner3.jpg" alt="Game Banner 3" class="banner-img">
                 </div>
             </div>
         </div>
     </section>
+    
+    <script>
+        // JavaScript untuk banner slider
+        const slides = document.querySelectorAll('.banner-slide');
+        let currentSlide = 0;
+    
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+    
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+    
+        // Pindah slide setiap 5 detik
+        setInterval(nextSlide, 5000);
+    </script>
 
     <!-- Popular Transactions Section -->
     <section class="popular-transactions">
@@ -98,65 +129,22 @@
     <!-- Product Filter Section -->
     <section class="product-filter">
         <div class="container">
-            <div class="filter-buttons">
-                <button class="filter-btn active">PALING LARIS</button>
-                <button class="filter-btn">HARGA TERMURAH</button>
+            <div class="filter-buttons" id="filter-container">
+                <button class="filter-btn active" data-category="topup">TOPUP GAMES</button>
+                <button class="filter-btn" data-category="joki">JOKI GAMES</button>
             </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid" id="product-container"></div>
             
-            <div class="product-grid">
-                <!-- Row 1 -->
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                
-                <!-- Row 2 -->
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-                <div class="product-card">
-                    <img src="/placeholder.svg?height=150&width=150" alt="Game Currency" class="product-img">
-                    <div class="product-value">5v</div>
-                </div>
-            </div>
-            
-            <div class="pagination">
+            <!--div class="pagination">
                 <span class="page-info">HALAMAN</span>
                 <div class="page-numbers">
                     <a href="#" class="page-number active">1</a>
                     <a href="#" class="page-number">2</a>
                     <a href="#" class="page-number">3</a>
                 </div>
-            </div>
+            </div -->
         </div>
     </section>
 
@@ -166,7 +154,9 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <div class="footer-logo">
-                        <img src="/placeholder.svg?height=60&width=60" alt="WSA Logo" class="footer-logo-img">
+                        <a href="index.html">
+                        <img src="/Element/LOGOWSA.PNG" alt="WSA Logo" class="footer-logo-img" style="width: 150px; height: auto;">
+                        </a>
                     </div>
                     <div class="footer-slogan">
                         <h3>WSA TOPUP</h3>
@@ -182,9 +172,9 @@
                         <h4>Peta Situs</h4>
                         <ul>
                             <li><a href="#">Beranda</a></li>
-                            <li><a href="#">Leaderboard</a></li>
-                            <li><a href="#">Reward</a></li>
-                            <li><a href="#">Kalender</a></li>
+                            <li><a href="leaderboard.html">Leaderboard</a></li>
+                            <li><a href="riwayat-page.html">Riwayat</a></li>
+                            <li><a href="kalkulator-page.html">Kalkulator</a></li>
                         </ul>
                     </div>
                     
@@ -193,11 +183,11 @@
                         <ul class="social-links">
                             <li>
                                 <i class="fab fa-instagram"></i>
-                                <a href="#">@wsa.id</a>
+                                <a href="https://www.instagram.com/wsa.topup/">@wsa.topup</a>
                             </li>
                             <li>
                                 <i class="fab fa-youtube"></i>
-                                <a href="#">YouTube WSA</a>
+                                <a href="https://www.youtube.com/@WiyandraSFL">YouTube WSA</a>
                             </li>
                             <li>
                                 <i class="fab fa-tiktok"></i>
@@ -211,7 +201,7 @@
                       <ul>
                           <li>
                               <i class="fab fa-whatsapp"></i>
-                              <a href="#">Admin Whatsapp</a>
+                              <a href="https://wa.me/+6281213568623">Admin Whatsapp</a>
                           </li>
                       </ul>
                   </div>
@@ -219,9 +209,92 @@
           </div>
           
           <div class="footer-bottom">
-              <p>&copy; 2023 WSA TOPUP | Made by Group Transaksi</p>
+              <p>&copy; 2025 WSA TOPUP | Made by Group Kelompok 2</p>
           </div>
       </div>
   </footer>
+  <script>
+    // Data Produk dengan Nama Berbeda
+    const products = {
+        topup: [
+            { img: "/ListGames/MLList.png", name: "Diamond Mobile Legends" },
+            { img: "/ListGames/PUBGMList.png", name: "UC PUBG Mobile" },
+            { img: "/ListGames/ValoList.png", name: "Valorant Points" },
+            { img: "/ListGames/GIList.png", name: "Genesis Crystals Genshin" },
+            { img: "/ListGames/PBList.png", name: "Point Blank Cash" },
+            { img: "/ListGames/GarenaList.png", name: "Shell Garena" },
+            { img: "/ListGames/FFList.png", name: "Free Fire Diamonds" },
+            { img: "/ListGames/HOKList.png", name: "Honor of Kings Tokens" },
+            { img: "/ListGames/ApexList.png", name: "Apex Legends Coins" },
+            { img: "/ListGames/CODMList.png", name: "COD Mobile CP" }
+        ],
+        joki: [
+            { img: "/Element/Joki ML HD.jpg", name: "Joki Rank Mobile Legends" },
+            { img: "/Element/Joki Valorant HD.png", name: "Joki Rank Valorant" }
+        ]
+    };
+
+    // Elemen DOM
+    const productContainer = document.getElementById("product-container");
+    const filterContainer = document.getElementById("filter-container");
+
+    // Fungsi untuk menampilkan produk berdasarkan kategori
+    function showProducts(category) {
+        const selectedProducts = products[category];
+        productContainer.innerHTML = selectedProducts
+            .map(product => `
+                <div class="product-card">
+                    <img src="${product.img}" alt="${product.name}" class="product-img">
+                </div>
+            `).join("");
+
+        // Update tombol aktif
+        document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+        document.querySelector(`[data-category="${category}"]`).classList.add("active");
+    }
+
+    // Event listener untuk tombol filter (event delegation)
+    filterContainer.addEventListener("click", (event) => {
+        if (event.target.classList.contains("filter-btn")) {
+            showProducts(event.target.dataset.category);
+        }
+    });
+
+    // Tampilkan produk TOPUP GAMES pertama kali
+    showProducts("topup");
+</script>
+
+<script>
+    const games = ["Mobile Legends", "Minecraft", "Mortal Kombat", "Magic Chess", "Point Blank", "PUBG Mobile", "Free Fire", "Valorant", "Genshin Impact", "Apex Legends", "Call of Duty Mobile", "Honor of Kings"];
+    const searchInput = document.getElementById("searchInput");
+    const resultsContainer = document.getElementById("searchResults");
+
+    searchInput.addEventListener("input", function() {
+        let query = this.value.toLowerCase();
+        resultsContainer.innerHTML = ""; // Bersihkan hasil sebelumnya
+
+        if (query.length > 0) {
+            let filteredGames = games.filter(game => game.toLowerCase().startsWith(query));
+
+            filteredGames.forEach(game => {
+                let listItem = document.createElement("li");
+                listItem.textContent = game;
+                listItem.classList.add("search-result-item");
+                listItem.onclick = function() {
+                    window.location.href = "Top UP ML/topupfix.html";
+                };
+                resultsContainer.appendChild(listItem);
+            });
+        }
+    });
+
+    // Menutup hasil pencarian jika klik di luar
+    document.addEventListener("click", function(event) {
+        if (!searchInput.contains(event.target) && !resultsContainer.contains(event.target)) {
+            resultsContainer.innerHTML = "";
+        }
+    });
+</script>
+
 </body>
 </html>

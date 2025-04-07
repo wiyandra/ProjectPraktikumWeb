@@ -4,75 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WSA TOPUP | Payment Page</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: #000;
-            color: #fff;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header Styles */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #333;
-        }
-        
-        .logo img {
-            height: 40px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-menu a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        .search-bar {
-            display: flex;
-            align-items: center;
-        }
-        
-        .search-bar input {
-            background-color: #333;
-            border: none;
-            border-radius: 20px;
-            padding: 8px 15px;
-            color: #fff;
-            width: 250px;
-        }
-        
-        .user-icon {
-            margin-left: 10px;
-            width: 30px;
-            height: 30px;
-            background-color: #333;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Progress Section */
+        /* Keep the original payment page styles that aren't in the CSS file */
         .progress-section {
             background-color: #222;
             border-radius: 10px;
@@ -128,6 +62,17 @@
             font-size: 12px;
             color: #999;
         }
+
+        .user-icon {
+        margin-left: 15px;
+        background-color: #333;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
         
         /* Timer */
         .timer {
@@ -326,38 +271,45 @@
             background-color: #c64b2a;
             color: black;
         }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
-            border-top: 1px solid #333;
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <header>
-            <div class="logo">
-                <img src="/Pembayaran/WSA STORE.PNG" alt="WSA TOPUP Logo" style="max-height: 40px;">
-            </div>
-            <div class="nav-menu">
-                <a href="#">Beranda</a>
-                <a href="#">Leaderboard</a>
-                <a href="#">Riwayat</a>
-                <a href="#">Kalkulator</a>
-            </div>
+
+<!-- Header (Updated to match styles.css) -->
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="/Top UP ML/WSA STORE.PNG" alt="WSA Topup Logo" class="logo-img">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Beranda</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="riwayat.html">Riwayat</a></li>
+                <li><a href="kalkulator.html">Kalkulator</a></li>
+            </ul>
+        </nav>
+        <div class="search-profile">
             <div class="search-bar">
                 <input type="text" placeholder="Cari Topup atau Joki Games">
-                <div class="user-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                    </svg>
-                </div>
             </div>
-        </header>
+            <div class="user-icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                >
+                    <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                    />
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
         
         <!-- Progress Section -->
         <div class="progress-section">
@@ -373,8 +325,7 @@
                             <path d="M32.4582 22.958H27.5664C26.8706 22.958 26.5228 22.958 26.2609 23.1468C25.999 23.3355 25.889 23.6655 25.669 24.3256L24.9974 26.3405C24.7773 27.0005 24.6673 27.3305 24.4055 27.5193C24.1436 27.708 23.7957 27.708 23.1 27.708H14.8997C14.204 27.708 13.8561 27.708 13.5942 27.5193C13.3323 27.3305 13.2223 27.0005 13.0023 26.3405L12.3307 24.3256C12.1107 23.6655 12.0007 23.3355 11.7388 23.1468C11.4769 22.958 11.129 22.958 10.4333 22.958H5.5415" stroke="white"/>
                             <path d="M27.7082 22.9583V12.5377C27.7082 12.2932 27.7082 12.1709 27.6805 12.0558C27.656 11.9537 27.6156 11.8562 27.5608 11.7667C27.499 11.6658 27.4125 11.5793 27.2395 11.4064L23.4268 7.59363C23.2538 7.42068 23.1674 7.3342 23.0665 7.27236C22.977 7.21753 22.8794 7.17713 22.7774 7.15263C22.6623 7.125 22.54 7.125 22.2954 7.125H12.6915C11.8514 7.125 11.4314 7.125 11.1105 7.28849C10.8283 7.4323 10.5988 7.66177 10.455 7.94401C10.2915 8.26488 10.2915 8.68492 10.2915 9.525V22.9583" stroke="white"/>
                             <path d="M21.375 7.12467L21.375 11.858C21.375 12.4181 21.375 12.6981 21.484 12.912C21.5799 13.1002 21.7328 13.2531 21.921 13.349C22.1349 13.458 22.4149 13.458 22.975 13.458L27.7083 13.458" stroke="white"/>
-                            </svg>
-                            
+                        </svg>
                     </div>
                     <div class="step-title">Transaksi Diterima</div>
                     <div class="step-desc">Pesanan telah diterima</div>
@@ -397,8 +348,7 @@
                             <path d="M5.646 20.3545L7.48447 18.516" stroke="#8D8787" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M18.5156 18.5156L20.3541 20.3541" stroke="#8D8787" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M5.64648 5.64648L8.4042 8.4042" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            
+                        </svg>
                     </div>
                     <div class="step-title">Sedang Diproses</div>
                     <div class="step-desc">Transaksi sedang diproses</div>
@@ -408,8 +358,7 @@
                         <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M19 33.25C22.2968 33.25 25.4916 32.1069 28.0401 30.0154C30.5886 27.9239 32.333 25.0135 32.9762 21.78C33.6194 18.5466 33.1215 15.1901 31.5674 12.2826C30.0133 9.37507 27.4991 7.09635 24.4532 5.83472C21.4074 4.57308 18.0183 4.40659 14.8634 5.3636C11.7086 6.32061 8.98317 8.34192 7.15156 11.0831C5.31995 13.8243 4.49547 17.1158 4.81862 20.3967C5.14176 23.6777 6.59253 26.7451 8.92373 29.0763" stroke="white" stroke-linecap="round"/>
                             <path d="M25.3335 15.833L18.8189 23.6506C18.1633 24.4372 17.8355 24.8306 17.3949 24.8506C16.9544 24.8706 16.5923 24.5085 15.8682 23.7844L12.6668 20.583" stroke="white" stroke-linecap="round"/>
-                            </svg>                            
-                            
+                        </svg>
                     </div>
                     <div class="step-title">Transaksi Selesai</div>
                     <div class="step-desc">Transaksi telah selesai dilakukan</div>
@@ -460,7 +409,7 @@
                         <div class="detail-value">: WEJRWIEFMW09234 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 0 0 0 6.5 4h3A1.5 0 0 0 11 2.5v-1A1.5 0 0 0 9.5 0h-3z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
                             </svg>
                         </div>
                     </div>
@@ -517,7 +466,7 @@
                         <div class="copy-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 0 0 0 6.5 4h3A1.5 0 0 0 11 2.5v-1A1.5 0 0 0 9.5 0h-3z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
                             </svg>
                         </div>
                     </div>
@@ -539,10 +488,12 @@
             </button>
         </div>
         
-        <!-- Footer -->
+        <!-- Footer - Updated to match the CSS styles -->
         <footer>
-            <p>© 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya</p>
-        </footer>
+            <div class="container">
+              © 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya
+            </div>
+          </footer>
     </div>
 
     <!-- JavaScript for status change -->
@@ -571,14 +522,12 @@
         // Add a button to manually trigger the status change
         const paymentSection = document.querySelector('.qr-section');
         const triggerButton = document.createElement('button');
-        <!-- triggerButton.className = 'download-btn';
+        /* triggerButton.className = 'download-btn';
         triggerButton.style.marginTop = '10px';
         triggerButton.style.backgroundColor = '#4CAF50'; 
-        triggerButton.textContent = 'Simulasi Pembayaran Berhasil'; -->
+        triggerButton.textContent = 'Simulasi Pembayaran Berhasil'; */
         triggerButton.onclick = simulateProcessing;
         paymentSection.appendChild(triggerButton);
-        
     </script>
 </body>
 </html>
-

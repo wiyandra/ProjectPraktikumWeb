@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mobile Legends Top-Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+      /* Existing styles remain unchanged */
       * {
         margin: 0;
         padding: 0;
@@ -23,63 +26,7 @@
         padding: 0 15px;
       }
 
-      /* Header Styles */
-      header {
-        background-color: #1a1a1a;
-        padding: 15px 0;
-        border-bottom: 1px solid #333;
-      }
-
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        display: flex;
-        align-items: center;
-      }
-
-      .logo img {
-        height: 40px;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 30px;
-      }
-
-      .nav-links a {
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-      }
-
-      .search-bar {
-        display: flex;
-        align-items: center;
-      }
-
-      .search-bar input {
-        padding: 8px 15px;
-        border-radius: 20px;
-        border: none;
-        background-color: #333;
-        color: white;
-        width: 250px;
-      }
-
-      .user-icon {
-        margin-left: 15px;
-        background-color: #333;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+      /* Header and Footer styles are removed as they will be using styles.css */
 
       /* Banner */
       .banner {
@@ -130,6 +77,17 @@
       .section h2 {
         font-size: 16px;
         text-transform: uppercase;
+      }
+
+      .user-icon {
+        margin-left: 15px;
+        background-color: #333;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       /* Game Info */
@@ -304,52 +262,44 @@
       .order-button i {
         margin-right: 10px;
       }
-
-      /* Footer */
-      footer {
-        text-align: center;
-        padding: 20px 0;
-        color: #aaa;
-        font-size: 14px;
-        margin-top: 30px;
-      }
     </style>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <div class="navbar">
-          <div class="logo">
-            <img
-              src="/Top UP ML/WSA STORE.PNG"
-              alt="WSA Logo"
-            />
-          </div>
-          <div class="nav-links">
-            <a href="#">Beranda</a>
-            <a href="#">Leaderboard</a>
-            <a href="#">Riwayat</a>
-            <a href="#">Kalkulator</a>
-          </div>
-          <div class="search-bar">
-            <input type="text" placeholder="Cari Topup atau Joki Games" />
-            <div class="user-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
-                />
-              </svg>
-            </div>
-          </div>
+
+<!-- Header (Updated to match styles.css) -->
+<header>
+    <div class="container">
+        <div class="logo">
+            <img src="/Top UP ML/WSA STORE.PNG" alt="WSA Topup Logo" class="logo-img">
         </div>
-      </div>
-    </header>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Beranda</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="riwayat.html">Riwayat</a></li>
+                <li><a href="kalkulator.html">Kalkulator</a></li>
+            </ul>
+        </nav>
+        <div class="search-profile">
+            <div class="search-bar">
+                <input type="text" placeholder="Cari Topup atau Joki Games">
+            </div>
+            <div class="user-icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                >
+                    <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                    />
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
 
     <div class="container">
       <div class="banner">
@@ -438,36 +388,36 @@
               <!-- Row 1 -->
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">86 Diamond</div>
+                  <div class="product-price">Rp. 20.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">172 Diamond</div>
+                  <div class="product-price">Rp. 40.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">257 Diamond</div>
+                  <div class="product-price">Rp. 60.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">344 Diamond</div>
+                  <div class="product-price">Rp. 80.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">429 Diamond</div>
+                  <div class="product-price">Rp. 100.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
@@ -475,44 +425,39 @@
               <!-- Row 2 -->
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">514 Diamond</div>
+                  <div class="product-price">Rp. 120.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">600 Diamond</div>
+                  <div class="product-price">Rp. 140.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">706 Diamond</div>
+                  <div class="product-price">Rp. 160.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">878 Diamond</div>
+                  <div class="product-price">Rp. 200.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
               <div class="product-item">
                 <div class="product-info">
-                  <div class="product-name">1 Diamond</div>
-                  <div class="product-price">Rp. 0</div>
+                  <div class="product-name">963 Diamond</div>
+                  <div class="product-price">Rp. 220.000</div>
                 </div>
                 <img class="product-icon" src="/Top UP ML/diamond.png" alt="Diamond" />
               </div>
-
-              <!-- Additional rows (simplified for brevity) -->
-              <!-- Row 3-8 (30 more items) -->
-              <!-- Repeating the same pattern for brevity -->
-              <!-- In a real implementation, you would list all 40 items -->
             </div>
           </div>
 
@@ -526,7 +471,7 @@
                 <img src="/Top UP ML/qris.png" alt="QRIS" />
                 <div>QRIS (Satu Kode QR untuk Semua)</div>
               </div>
-              <div>RpNaN</div>
+              <div>Rp. 100.000</div>
             </div>
 
             <!-- Changed to dropdown -->
@@ -547,7 +492,7 @@
                   <img src="/Top UP ML/bri.png" alt="BRI" />
                   <div class="payment-info">Pembayaran Melalui Bank BRI</div>
                 </div>
-                <div>RpNaN</div>
+                <div>Rp. 100.000</div>
               </div>
 
               <div class="payment-method" id="bni-option">
@@ -556,7 +501,7 @@
                   <img src="/Top UP ML/bni.png" alt="BNI" />
                   <div class="payment-info">Pembayaran Melalui Bank BNI</div>
                 </div>
-                <div>RpNaN</div>
+                <div>Rp. 100.000</div>
               </div>
 
               <div class="payment-method" id="mandiri-option">
@@ -565,7 +510,7 @@
                   <img src="/Top UP ML/mandiri.png" alt="Mandiri" />
                   <div class="payment-info">Pembayaran Melalui Bank MANDIRI</div>
                 </div>
-                <div>RpNaN</div>
+                <div>Rp. 100.000</div>
               </div>
 
               <div class="payment-method" id="bca-option">
@@ -574,34 +519,25 @@
                   <img src="/Top UP ML/bca.png" alt="BCA" />
                   <div class="payment-info">Pembayaran Melalui Bank BCA</div>
                 </div>
-                <div>RpNaN</div>
+                <div>Rp. 100.000</div>
               </div>
             </div>
           </div>
 
           <button class="order-button">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="16"
-              fill="currentColor"
-              viewBox="0 1 16 16"
-            >
-              <path
-                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-              />
-            </svg>
+            <i class="fas fa-shopping-cart"></i>
             Pesan Sekarang
           </button>
         </div>
       </div>
     </div>
 
+    <!-- Footer (Updated to match styles.css) -->
     <footer>
-      <div class="container">
-        © 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya
-      </div>
-    </footer>
+        <div class="container">
+          © 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya
+        </div>
+      </footer>
 
     <script>
       // JavaScript to handle bank dropdown selection
