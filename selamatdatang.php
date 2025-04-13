@@ -28,7 +28,7 @@ $countdownTime = 10;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selamat Datang - WSA TOPUP</title>
-    <meta http-equiv="refresh" content="<?php echo $countdownTime; ?>;url=login.html">
+    <meta http-equiv="refresh" content="<?php echo $countdownTime; ?>;url=login.php">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         /* Reset Default */
@@ -159,7 +159,7 @@ $countdownTime = 10;
             <div class="countdown-container">
                 <p class="countdown-message">Anda akan diarahkan ke halaman login dalam:</p>
                 <p class="countdown" id="countdown"><?php echo $countdownTime; ?> detik</p>
-                <p class="redirect-message">Jika tidak diarahkan secara otomatis, <a href="login.html" class="btn-login">Klik di sini</a></p>
+                <p class="redirect-message">Jika tidak diarahkan secara otomatis, <a href="login.php" class="btn-login">Klik di sini</a></p>
             </div>
         </div>
     </div>
@@ -175,7 +175,7 @@ $countdownTime = 10;
 
             if (countdownTime <= 0) {
                 clearInterval(countdownInterval);
-                window.location.href = "login.html"; // Redirect when countdown ends
+                window.location.href = "login.php"; // Redirect when countdown ends
             }
         }, 1000);
     </script>
