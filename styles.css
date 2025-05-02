@@ -128,13 +128,45 @@ nav ul li a:hover {
     color: white;
 }
 
-
-.profile-img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+/* Dropdown Menu Styles */
+.profile {
+    position: relative;
     cursor: pointer;
 }
+
+.profile:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #ff7700;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;  /* Transisi untuk opasitas */
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+    color: black;
+    background-color: #f0f0f0;
+}
+
+
 
 /* Hero Banner Styles */
 .hero-banner {

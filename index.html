@@ -30,9 +30,11 @@
                   <ul id="searchResults"></ul>
               </div>
               <div class="profile">
-                <a href="profil.html">
-                  <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img">
-                </a>
+                  <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle" onclick="toggleDropdown()">
+                  <div class="dropdown-menu" id="profileDropdown">
+                    <a href="profil.html">Profil</a>
+                    <a href="setting.html">Pengaturan</a>
+                    <a href="logout.php">Keluar</a>
               </div>
           </div>
       </div>
@@ -43,7 +45,7 @@
         <div class="container">
             <div class="banner-slider" id="banner-slider">
                 <div class="banner-slide active">
-                    <img src="/Element/Banner/banner1.jpg" alt= "Game Banner 1" class="banner-img">
+                    <img src="/Element/Banner/banner1.jpg" alt="Game Banner 1" class="banner-img">
                 </div>
                 <div class="banner-slide">
                     <img src="/Element/Banner/banner2.jpg" alt="Game Banner 2" class="banner-img">
@@ -55,6 +57,23 @@
         </div>
     </section>
     
+    <script>
+        // JavaScript untuk tombol profile dropdown
+        function toggleDropdown() {
+            const dropdown = document.getElementById("profileDropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        // Menutup dropdown jika diklik di luar area profil
+        window.addEventListener("click", function(event) {
+            const profile = document.querySelector(".profile");
+            const dropdown = document.getElementById("profileDropdown");
+            if (!profile.contains(event.target)) {
+                dropdown.style.display = "none";
+            }
+        });
+    </script>
+
     <script>
         // JavaScript untuk banner slider
         const slides = document.querySelectorAll('.banner-slide');
