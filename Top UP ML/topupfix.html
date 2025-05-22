@@ -266,40 +266,36 @@
   </head>
   <body>
 
-<!-- Header (Updated to match styles.css) -->
-<header>
-    <div class="container">
-        <div class="logo">
-            <img src="/Top UP ML/WSA STORE.PNG" alt="WSA Topup Logo" class="logo-img">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Beranda</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="riwayat.html">Riwayat</a></li>
-                <li><a href="kalkulator.html">Kalkulator</a></li>
-            </ul>
-        </nav>
-        <div class="search-profile">
-            <div class="search-bar">
-                <input type="text" placeholder="Cari Topup atau Joki Games">
+    <!-- Header Navigation -->
+        <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
+                </a>
             </div>
-            <div class="user-icon">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                >
-                    <path
-                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
-                    />
-                </svg>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="riwayat-page.html">Riwayat</a></li>
+                    <li><a href="kalkulator-page.html">Kalkulator</a></li>
+                </ul>
+            </nav>
+            <div class="search-profile">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Cari Games...">
+                    <ul id="searchResults"></ul>
+                </div>
+                <div class="profile">
+                    <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle" onclick="toggleDropdown()">
+                    <div class="dropdown-menu" id="profileDropdown">
+                        <a href="profil.html">Profil</a>
+                        <a href="logout.php">Keluar</a>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+        </header>
 
     <div class="container">
       <div class="banner">
@@ -560,5 +556,52 @@
         }
       });
     </script>
+
+    <script>
+    const searchInput = document.getElementById("searchInput");
+    const resultsContainer = document.getElementById("searchResults");
+
+    let games = [];
+
+    // Ambil data game dari server
+    fetch("get_games.php")
+        .then(response => response.json())
+        .then(data => {
+            games = data;
+        })
+        .catch(error => {
+            console.error("Gagal mengambil data games:", error);
+        });
+
+    searchInput.addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+        resultsContainer.innerHTML = "";
+
+        if (query.length > 0) {
+            const filteredGames = games.filter(game => game.toLowerCase().startsWith(query));
+
+            filteredGames.forEach(game => {
+                const listItem = document.createElement("li");
+                listItem.textContent = game;
+                listItem.classList.add("search-result-item");
+                listItem.onclick = function () {
+                    if (game.toLowerCase() === "mobile legends") {
+                        window.location.href = "Top UP ML/topupfix.html";
+                    } else {
+                        alert("Halaman topup belum tersedia untuk: " + game);
+                    }
+                };
+                resultsContainer.appendChild(listItem);
+            });
+        }
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!searchInput.contains(event.target) && !resultsContainer.contains(event.target)) {
+            resultsContainer.innerHTML = "";
+        }
+    });
+  </script>
+
   </body>
 </html>

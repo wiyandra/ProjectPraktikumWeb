@@ -26,14 +26,13 @@
           </nav>
           <div class="search-profile">
               <div class="search-bar">
-                  <input type="text" id="searchInput" placeholder="Search..." autocomplete="off">
+                  <input type="text" id="searchInput" placeholder="Cari Games...">
                   <ul id="searchResults"></ul>
               </div>
               <div class="profile">
                   <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle" onclick="toggleDropdown()">
                   <div class="dropdown-menu" id="profileDropdown">
                     <a href="profil.html">Profil</a>
-                    <a href="setting.html">Pengaturan</a>
                     <a href="logout.php">Keluar</a>
               </div>
           </div>
@@ -276,36 +275,51 @@
 </script>
 
 <script>
-    const games = ["Mobile Legends", "Point Blank", "PUBG Mobile", "Free Fire", "Valorant", "Genshin Impact", "Apex Legends", "Call of Duty Mobile", "Honor of Kings"];
     const searchInput = document.getElementById("searchInput");
     const resultsContainer = document.getElementById("searchResults");
 
-    searchInput.addEventListener("input", function() {
-        let query = this.value.toLowerCase();
-        resultsContainer.innerHTML = ""; // Bersihkan hasil sebelumnya
+    let games = [];
+
+    // Ambil data game dari server
+    fetch("get_games.php")
+        .then(response => response.json())
+        .then(data => {
+            games = data;
+        })
+        .catch(error => {
+            console.error("Gagal mengambil data games:", error);
+        });
+
+    searchInput.addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+        resultsContainer.innerHTML = "";
 
         if (query.length > 0) {
-            let filteredGames = games.filter(game => game.toLowerCase().startsWith(query));
+            const filteredGames = games.filter(game => game.toLowerCase().startsWith(query));
 
             filteredGames.forEach(game => {
-                let listItem = document.createElement("li");
+                const listItem = document.createElement("li");
                 listItem.textContent = game;
                 listItem.classList.add("search-result-item");
-                listItem.onclick = function() {
-                    window.location.href = "Top UP ML/topupfix.html";
+                listItem.onclick = function () {
+                    if (game.toLowerCase() === "mobile legends") {
+                        window.location.href = "Top UP ML/topupfix.html";
+                    } else {
+                        alert("Halaman topup belum tersedia untuk: " + game);
+                    }
                 };
                 resultsContainer.appendChild(listItem);
             });
         }
     });
 
-    // Menutup hasil pencarian jika klik di luar
-    document.addEventListener("click", function(event) {
+    document.addEventListener("click", function (event) {
         if (!searchInput.contains(event.target) && !resultsContainer.contains(event.target)) {
             resultsContainer.innerHTML = "";
         }
     });
 </script>
+
 
 </body>
 </html>

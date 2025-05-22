@@ -10,29 +10,33 @@
 <body>
     <!-- Header Navigation -->
     <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
-                </a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Dashboard</a></li>
-                    <li><a href="Leaderboard.html">Leaderboard</a></li>
-                    <li><a href="riwayat-page.html">Riwayat</a></li>
-                    <li><a href="kalkulator-page.html">Kalkulator</a></li>
-                </ul>
-            </nav>
-            <div class="search-profile">
-                <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                </div>
-                <div class="profile">
-                    <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img">
-                </div>
-            </div>
-        </div>
+      <div class="container">
+          <div class="logo">
+            <a href="index.html">
+              <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
+            </a>
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="index.html">Dashboard</a></li>
+                  <li><a href="leaderboard.html">Leaderboard</a></li>
+                  <li><a href="riwayat-page.html">Riwayat</a></li>
+                  <li><a href="kalkulator-page.html">Kalkulator</a></li>
+              </ul>
+          </nav>
+          <div class="search-profile">
+              <div class="search-bar">
+                  <input type="text" id="searchInput" placeholder="Cari Games...">
+                  <ul id="searchResults"></ul>
+              </div>
+              <div class="profile">
+                  <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle" onclick="toggleDropdown()">
+                  <div class="dropdown-menu" id="profileDropdown">
+                    <a href="profil.html">Profil</a>
+                    <a href="logout.php">Keluar</a>
+              </div>
+          </div>
+      </div>
     </header>
 
     <!-- Testimonials Section -->
@@ -113,6 +117,51 @@
         </div>
     </section>
 
+    <script>
+    const searchInput = document.getElementById("searchInput");
+    const resultsContainer = document.getElementById("searchResults");
+
+    let games = [];
+
+    // Ambil data game dari server
+    fetch("get_games.php")
+        .then(response => response.json())
+        .then(data => {
+            games = data;
+        })
+        .catch(error => {
+            console.error("Gagal mengambil data games:", error);
+        });
+
+    searchInput.addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+        resultsContainer.innerHTML = "";
+
+        if (query.length > 0) {
+            const filteredGames = games.filter(game => game.toLowerCase().startsWith(query));
+
+            filteredGames.forEach(game => {
+                const listItem = document.createElement("li");
+                listItem.textContent = game;
+                listItem.classList.add("search-result-item");
+                listItem.onclick = function () {
+                    if (game.toLowerCase() === "mobile legends") {
+                        window.location.href = "Top UP ML/topupfix.html";
+                    } else {
+                        alert("Halaman topup belum tersedia untuk: " + game);
+                    }
+                };
+                resultsContainer.appendChild(listItem);
+            });
+        }
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!searchInput.contains(event.target) && !resultsContainer.contains(event.target)) {
+            resultsContainer.innerHTML = "";
+        }
+    });
+    </script>
 
     <!-- Footer -->
     <footer>
