@@ -40,33 +40,55 @@
         </div>
         </header>
 
-        <input type="file" id="upload-photo" accept="image/*" style="display: none;" />
-    <img src="Element/Icon/Profile.png" alt="Profile Image" class="img" id="profile-img" style="cursor: pointer;" onclick="document.getElementById('upload-photo').click();" />
-        <div class="text-wrapper-5">Hi, Username</div>
-        <p class="text-wrapper-10">
-        Informasi ini bersifat pribadi, berhati-hatilah dalam membagikan informasi.
-        </p>
+        <div class="profile-header">
+            <div class="profile-img-wrapper">
+                <img class="img" src="Element/Icon/Profile.png" alt="Profile Image" />
+                <button type="button" class="btn-profile-plus" title="Ganti Foto Profil">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            <div class="profile-nama">
+                <div class="text-wrapper-5">Hi, Username</div>
+                <p class="text-wrapper-10">
+                    Informasi ini bersifat pribadi, berhati-hatilah dalam membagikan informasi.
+                </p>
+            </div>
+        </div>
 
-        <label for="nama" class="text-label" style="top: 409px; left: 375px;">Nama Kamu</label>
-        <input type="text" id="nama" class="input-field" placeholder="Masukkan nama kamu" style="top: 467px; left: 375px;">
-
-        <label for="username" class="text-label" style="top: 409px; left: 995px;">Username</label>
-        <input type="text" id="username" class="input-field" placeholder="Masukkan username" style="top: 467px; left: 995px;">
-
-        <label for="email" class="text-label" style="top: 547px; left: 375px;">Alamat Email</label>
-        <input type="email" id="email" class="input-field" placeholder="Masukkan email" style="top: 605px; left: 375px;">
-
-        <label for="phone" class="text-label" style="top: 547px; left: 995px;">No. Handphone</label>
-        <input type="tel" id="phone" class="input-field" placeholder="Masukkan no. handphone" style="top: 605px; left: 995px;">
-
-        <label for="password-lama" class="text-label" style="top: 808px; left: 375px;">Password Lama</label>
-        <input type="password" id="password-lama" class="input-field" placeholder="Masukkan password lama" style="top: 866px; left: 375px; width: 300px;">
-
-        <label for="password-baru" class="text-label" style="top: 808px; left: 720px;">Password Baru</label>
-        <input type="password" id="password-baru" class="input-field" placeholder="Masukkan password baru" style="top: 866px; left: 720px; width: 300px;">
-        <button class="btn" style="top: 866px; left: 1050px; width: 150px; height: 50px; font-size: 14px;">Ubah Password</button>
-
-        <button class="btn" style="top: 717px; left: 375px;">Simpan</button>
+        <form>
+            <div class="profile-form-grid">
+                <div class="profile-form-group">
+                    <label for="nama">Nama Kamu</label>
+                    <input type="text" id="nama" class="input-field" placeholder="Masukkan nama kamu">
+                </div>
+                <div class="profile-form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="input-field" placeholder="Masukkan username">
+                </div>
+                <div class="profile-form-group">
+                    <label for="email">Alamat Email</label>
+                    <input type="email" id="email" class="input-field" placeholder="Masukkan email">
+                </div>
+                <div class="profile-form-group">
+                    <label for="phone">No. Handphone</label>
+                    <input type="tel" id="phone" class="input-field" placeholder="Masukkan no. handphone">
+                </div>
+            </div>
+            <div class="profile-action-row">
+                <button class="btn" type="submit" style="position:static;width:180px;">Simpan</button>
+            </div>
+            <div class="profile-password-row">
+                <div class="profile-password-group">
+                    <label for="password-lama">Password Lama</label>
+                    <input type="password" id="password-lama" class="input-field" placeholder="Masukkan password lama">
+                </div>
+                <div class="profile-password-group">
+                    <label for="password-baru">Password Baru</label>
+                    <input type="password" id="password-baru" class="input-field" placeholder="Masukkan password baru">
+                </div>
+                <button class="profile-password-btn" type="button">Ubah Password</button>
+            </div>
+        </form>
     </div>
     <script>
     const fileInput = document.getElementById('upload-photo');
