@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Honor Of Kings Top-Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+      /* Existing styles remain unchanged */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #121212;
+        color: white;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Banner */
+      .banner {
+        margin: 20px 0;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .banner img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* Main Content */
+      .main-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      /* Sections */
+      .section {
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .section-title .circle {
+        width: 24px;
+        height: 24px;
+        background-color: #ff6600;
+        border-radius: 50%;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+
+      .section h2 {
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      .user-icon {
+        margin-left: 15px;
+        background-color: #333;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Game Info */
+      .game-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .game-image {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .game-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .star {
+        color: #ff6600;
+        margin-left: 5px;
+      }
+
+      .reviews {
+        margin-top: 15px;
+        width: 100%;
+      }
+
+      .review {
+        background-color: #252525;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .stars {
+        color: #ff6600;
+        margin-bottom: 5px;
+      }
+
+      /* Form Fields */
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-row {
+        display: flex;
+        gap: 15px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px;
+        background-color: #252525;
+        border: none;
+        border-radius: 5px;
+        color: white;
+      }
+
+      .form-info {
+        font-size: 12px;
+        color: #aaa;
+        margin-top: 10px;
+      }
+
+      /* Product Grid - Updated to match image */
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+      }
+
+      /* Updated Product Item Style */
+      .product-item {
+        background-color: #252525;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        border: 1px solid transparent;
+      }
+
+      .product-item.selected {
+        background-color: #252525;
+        border: 1px solid #ff6600;
+      }
+
+      .product-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .product-name {
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+
+      .product-price {
+        color: #ff6600;
+        font-size: 12px;
+      }
+
+      .product-icon {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      /* Payment Methods */
+      .payment-method {
+        background-color: #252525;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .payment-method.selected {
+        border: 1px solid #ff6600;
+      }
+
+      .payment-logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .payment-logo img {
+        height: 24px;
+        margin-right: 10px;
+      }
+
+      .payment-info {
+        font-size: 12px;
+        color: #aaa;
+      }
+
+      .payment-radio {
+        display: flex;
+        align-items: center;
+      }
+
+      .payment-amount {
+        font-weight: bold;
+      }
+
+      /* Bank Dropdown */
+      .bank-dropdown {
+        width: 100%;
+        padding: 12px;
+        background-color: #252525;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        margin-bottom: 15px;
+      }
+
+      .bank-dropdown option {
+        background-color: #252525;
+        color: white;
+      }
+
+      /* Order Button */
+      .order-button {
+        background-color: #ff6600;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 15px;
+        width: 100%;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .order-button i {
+        margin-right: 10px;
+      }
+
+      /* Error popup */
+      .error-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ff6600;
+        padding: 20px;
+        border-radius: 10px;
+        z-index: 1000;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        display: none;
+        max-width: 80%;
+        text-align: center;
+      }
+
+      .error-popup h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      .error-popup p {
+        margin-bottom: 15px;
+      }
+
+      .error-close {
+        background-color: white;
+        color: #ff6600;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      /* Overlay for popup */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+
+<!-- Header (Updated to match styles.css) -->
+<header>
+    <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="/Assets/WSA STORE.PNG" alt="WSA Topup Logo" class="logo-img">
+        </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Beranda</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="riwayat.html">Riwayat</a></li>
+                <li><a href="kalkulator.html">Kalkulator</a></li>
+            </ul>
+        </nav>
+        <div class="search-profile">
+            <div class="search-bar">
+                <input type="text" placeholder="Cari Topup atau Joki Games">
+            </div>
+            <div class="user-icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                >
+                    <path
+                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                    />
+                </svg>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="container">
+      <div class="banner">
+        <img src="/Assets/bannerhok.png" alt="HOK Banner" />
+      </div>
+
+      <div class="main-content">
+        <div>
+          <div class="section">
+            <div class="section-title">
+              <div class="circle"></div>
+              <h2>TOPUP</h2>
+            </div>
+            <div class="game-info">
+              <img class="game-image" src="/Assets/hokicon.jpg" alt="Honor of Kings" />
+              <div class="game-title">Honor of Kings</div>
+              <div class="rating">5.0 <span class="star">★</span></div>
+              <div>Ulasan</div>
+              <div class="reviews">
+                <div class="review">
+                  <div>Si A</div>
+                  <div class="stars">★★★★★</div>
+                  <div>Proses Cepat</div>
+                </div>
+                <div class="review">
+                  <div>Si B</div>
+                  <div class="stars">★★★★★</div>
+                  <div>Mantap Banget</div>
+                </div>
+                <div class="review">
+                  <div>Si C</div>
+                  <div class="stars">★★★★★</div>
+                  <div>Murah Banget!!!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="section">
+            <div class="section-title">
+              <div class="circle"></div>
+              <h2>MASUKKAN UID PENGGUNA</h2>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div style="flex: 1">
+                  <label>UID Pengguna</label>
+                  <input
+                    id="user-id"
+                    type="number"
+                    class="form-control"
+                    placeholder="Masukkan UID Pengguna"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <div class="circle"></div>
+              <h2>PILIH PRODUK</h2>
+            </div>
+            <div class="product-grid">
+              <!-- Row 1 -->
+              <div class="product-item" onclick="selectProduct(this, '475 Token', 54300)" data-price="54300">
+                <div class="product-info">
+                  <div class="product-name">475 Token</div>
+                  <div class="product-price">Rp. 54.300</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+              <div class="product-item" onclick="selectProduct(this, '950 Token', 108500)" data-price="108500">
+                <div class="product-info">
+                  <div class="product-name">950 Token</div>
+                  <div class="product-price">Rp. 108.500</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+              <div class="product-item" onclick="selectProduct(this, '1475 Token', 162800)" data-price="162800">
+                <div class="product-info">
+                  <div class="product-name">1475 Token</div>
+                  <div class="product-price">Rp. 162.800</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+              <div class="product-item" onclick="selectProduct(this, '2050 Token', 217000)" data-price="217000">
+                <div class="product-info">
+                  <div class="product-name">2050 Token</div>
+                  <div class="product-price">Rp. 217.000</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+              <div class="product-item" onclick="selectProduct(this, '2525 Token', 271300)" data-price="271300">
+                <div class="product-info">
+                  <div class="product-name">2525 Token</div>
+                  <div class="product-price">Rp. 271.300</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+
+              <!-- Row 2 -->
+              <div class="product-item" onclick="selectProduct(this, '3050 Token', 325500)" data-price="325500">
+                <div class="product-info">
+                  <div class="product-name">3050 Token</div>
+                  <div class="product-price">Rp. 325.500</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+              <div class="product-item" onclick="selectProduct(this, '3650 Token', 377000)" data-price="377000">
+                <div class="product-info">
+                  <div class="product-name">3650 Token</div>
+                  <div class="product-price">Rp. 377.000</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+              <div class="product-item" onclick="selectProduct(this, '4125 Token', 431000)" data-price="431000">
+                <div class="product-info">
+                  <div class="product-name">4125 Token</div>
+                  <div class="product-price">Rp. 431.000</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+              <div class="product-item" onclick="selectProduct(this, '4650 Token', 485500)" data-price="485500">
+                <div class="product-info">
+                  <div class="product-name">4650 Token</div>
+                  <div class="product-price">Rp. 485.500</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+              <div class="product-item" onclick="selectProduct(this, '5350 Token', 541600)" data-price="541600">
+                <div class="product-info">
+                  <div class="product-name">5350 Token</div>
+                  <div class="product-price">Rp. 541.600</div>
+                </div>
+                <img class="product-icon" src="/Assets/hoktoken.png" alt="Diamond" />
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <div class="circle"></div>
+              <h2>PILIH METODE PEMBAYARAN</h2>
+            </div>
+            <div class="payment-method" onclick="selectPaymentMethod(this, 'qris')">
+              <div class="payment-logo">
+                <input type="radio" name="payment" />
+                <img src="/Assets/qris.png" alt="QRIS" />
+                <div>QRIS (Satu Kode QR untuk Semua)</div>
+              </div>
+              <div class="payment-amount">Rp. <span class="payment-price">0</span></div>
+            </div>            
+            <!-- Display all bank options directly -->
+            <div id="bank-options">
+              <div class="payment-method bank-option" onclick="selectPaymentMethod(this, 'bri')">
+                <div class="payment-logo">
+                  <input type="radio" name="payment" />
+                  <img src="/Assets/bri.png" alt="BRI" />
+                  <div class="payment-info">Pembayaran Melalui Bank BRI</div>
+                </div>
+                <div class="payment-amount">Rp. <span class="bank-price">0</span></div>
+              </div>
+
+              <div class="payment-method bank-option" onclick="selectPaymentMethod(this, 'bni')">
+                <div class="payment-logo">
+                  <input type="radio" name="payment" />
+                  <img src="/Assets/bni.png" alt="BNI" />
+                  <div class="payment-info">Pembayaran Melalui Bank BNI</div>
+                </div>
+                <div class="payment-amount">Rp. <span class="bank-price">0</span></div>
+              </div>
+
+              <div class="payment-method bank-option" onclick="selectPaymentMethod(this, 'mandiri')">
+                <div class="payment-logo">
+                  <input type="radio" name="payment" />
+                  <img src="/Assets/mandiri.png" alt="Mandiri" />
+                  <div class="payment-info">Pembayaran Melalui Bank MANDIRI</div>
+                </div>
+                <div class="payment-amount">Rp. <span class="bank-price">0</span></div>
+              </div>
+
+              <div class="payment-method bank-option" onclick="selectPaymentMethod(this, 'bca')">
+                <div class="payment-logo">
+                  <input type="radio" name="payment" />
+                  <img src="/Assets/bca.png" alt="BCA" />
+                  <div class="payment-info">Pembayaran Melalui Bank BCA</div>
+                </div>
+                <div class="payment-amount">Rp. <span class="bank-price">0</span></div>
+              </div>
+            </div>
+          </div>
+
+          <button class="order-button" onclick="validateOrder()">
+            <i class="fas fa-shopping-cart"></i>
+            Pesan Sekarang
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error Popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="error-popup" id="error-popup">
+      <h3>Perhatian!</h3>
+      <p id="error-message"></p>
+      <button class="error-close" onclick="closeErrorPopup()">OK</button>
+    </div>
+
+    <!-- Footer (Updated to match styles.css) -->
+    <footer>
+        <div class="container">
+          © 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya
+        </div>
+    </footer>
+
+    <script>
+      // Function to handle product selection
+      function selectProduct(element, productName, price) {
+        // Remove selected class from all products
+        var allProducts = document.querySelectorAll('.product-item');
+        allProducts.forEach(function(item) {
+          item.classList.remove('selected');
+        });
+        
+        // Add selected class to clicked product
+        element.classList.add('selected');
+        
+        // Format price with thousand separators
+        function formatPrice(num) {
+          return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+        
+        // Update price in payment methods
+        var paymentPrices = document.querySelectorAll('.payment-price');
+        paymentPrices.forEach(function(item) {
+          item.textContent = formatPrice(price);
+        });
+        
+        // Update all bank prices
+        var bankPrices = document.querySelectorAll('.bank-price');
+        bankPrices.forEach(function(item) {
+          item.textContent = formatPrice(price);
+        });
+        
+        // Store selected product info for later use
+        sessionStorage.setItem('selectedProduct', productName);
+        sessionStorage.setItem('selectedPrice', price);
+      }
+
+      // Function to handle payment method selection
+      function selectPaymentMethod(element, method) {
+        // Remove selected class from all payment methods
+        var allPaymentMethods = document.querySelectorAll('.payment-method');
+        allPaymentMethods.forEach(function(item) {
+          item.classList.remove('selected');
+        });
+        
+        // Add selected class to clicked payment method
+        element.classList.add('selected');
+        
+        // Check the radio button
+        var radioButton = element.querySelector('input[type="radio"]');
+        if (radioButton) {
+          radioButton.checked = true;
+        }
+        
+        // Store selected payment method for later use
+        sessionStorage.setItem('selectedPaymentMethod', method);
+      }
+
+      // Function to validate form before proceeding to payment page
+      function validateOrder() {
+        // Get values
+        var userId = document.getElementById('user-id').value;
+        var selectedProduct = document.querySelector('.product-item.selected');
+        var selectedPayment = document.querySelector('.payment-method.selected');
+        
+        // Validate
+        if (!userId || userId.trim() === '') {
+          showErrorPopup('UID Pengguna belum diisi. Silakan masukkan UID Pengguna Anda.');
+          return false;
+        }
+        
+        if (!selectedProduct) {
+          showErrorPopup('HOK Token belum dipilih. Silakan pilih jumlah Token yang ingin dibeli.');
+          return false;
+        }
+        
+        if (!selectedPayment) {
+          showErrorPopup('Metode pembayaran belum dipilih. Silakan pilih salah satu metode pembayaran.');
+          return false;
+        }
+        
+        // If all validations pass, proceed to payment page
+        window.location.href = 'pembayaranhok.html';
+      }
+
+      // Function to show error popup
+      function showErrorPopup(message) {
+        document.getElementById('error-message').textContent = message;
+        document.getElementById('error-popup').style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+      }
+
+      // Function to close error popup
+      function closeErrorPopup() {
+        document.getElementById('error-popup').style.display = 'none';
+        document.getElementById('overlay').style.display = 'none';
+      }
+
+      // Auto-select the first product option on page load
+      window.onload = function() {
+        // Get the first product item
+        var firstProduct = document.querySelector('.product-item');
+        if (firstProduct) {
+          // Get product info from the first item
+          var productName = firstProduct.querySelector('.product-name').textContent;
+          var price = firstProduct.getAttribute('data-price');
+          
+          // Select it
+          selectProduct(firstProduct, productName, parseInt(price));
+        }
+      };
+    </script>
+  </body>
+</html>
