@@ -277,42 +277,36 @@
 <body>
     <div class="container">
 
-<!-- Header (Updated to match styles.css) -->
-<header>
-    <div class="container">
-        <div class="logo">
+<!-- Header Navigation -->
+    <header>
+      <div class="container">
+          <div class="logo">
             <a href="index.html">
-                <img src="/Assets/WSA STORE.PNG" alt="WSA Topup Logo" class="logo-img">
+              <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
             </a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Beranda</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="riwayat.html">Riwayat</a></li>
-                <li><a href="kalkulator.html">Kalkulator</a></li>
-            </ul>
-        </nav>
-        <div class="search-profile">
-            <div class="search-bar">
-                <input type="text" placeholder="Cari Topup atau Joki Games">
-            </div>
-            <div class="user-icon">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                >
-                    <path
-                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
-                    />
-                </svg>
-            </div>
-        </div>
-    </div>
-</header>
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="index.html">Dashboard</a></li>
+                  <li><a href="leaderboard.html">Leaderboard</a></li>
+                  <li><a href="riwayat-page.html">Riwayat</a></li>
+                  <li><a href="kalkulator-page.html">Kalkulator</a></li>
+              </ul>
+          </nav>
+          <div class="search-profile">
+              <div class="search-bar">
+                  <input type="text" id="searchInput" placeholder="Cari Games...">
+                  <ul id="searchResults"></ul>
+              </div>
+              <div class="profile">
+                  <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle" onclick="toggleDropdown()">
+                  <div class="dropdown-menu" id="profileDropdown">
+                    <a href="profil.html">Profil</a>
+                    <a href="logout.php">Keluar</a>
+              </div>
+          </div>
+      </div>
+    </header>
         
         <!-- Progress Section -->
         <div class="progress-section">
@@ -382,7 +376,7 @@
                 <div class="account-info">
                     <div style="display: flex; flex-direction: column; align-items: center; margin-right: 20px;">
                         <div class="game-image">
-                            <img src="/Assets/suyou.png" alt="Mobile Legends">
+                            <img src="Assets/suyou.png" alt="Mobile Legends">
                         </div>
                         <div class="game-title">Mobile Legends Bang Bang<br>150 Diamond</div>
                     </div>
@@ -480,7 +474,7 @@
         <!-- QR Code Section -->
         <div class="qr-section">
             <div class="qr-code">
-                <img src="/Assets/wsa qr.png" alt="QR Code">
+                <img src="Assets/wsa qr.png" alt="QR Code">
             </div>
             <button class="download-btn">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
