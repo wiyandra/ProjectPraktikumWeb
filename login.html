@@ -13,6 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div id="popup" class="popup-overlay" style="display:none;">
+        <div class="popup-content">
+            <p id="popup-message"></p>
+            <button onclick="closePopup()">Tutup</button>
+        </div>
+    </div>
     <div class="login-container">
         <div class="login-card">
             <!-- Logo dan branding -->
@@ -33,7 +39,7 @@
                 <!-- Input untuk username atau email -->
                 <div class="input-group">
                     <label for="username">Username/Email</label>
-                    <input type="text" name="username" id="username" placeholder="Masukkan username atau email" autocomplete="chrome-off" required>
+                    <input type="text" name="username" id="username" placeholder="Masukkan username atau email" required>
                 </div>
 
                 <!-- Input untuk password -->

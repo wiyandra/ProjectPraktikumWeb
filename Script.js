@@ -48,3 +48,37 @@ document.getElementById("email").addEventListener("input", function () {
     }
 });
 
+/* Auto Close Popup */
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
+
+// Fungsi untuk menampilkan popup
+function showPopup(message) {
+    const popup = document.getElementById('popup');
+    const popupMessage = document.getElementById('popup-message');
+
+    popupMessage.textContent = message;
+    popup.style.display = 'flex';  // Tampilkan popup (disesuaikan dengan style CSS kamu)
+}
+
+// Fungsi untuk menutup popup
+function closePopup() {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'none';
+}
+
+// Cek parameter di URL ketika halaman dimuat
+window.onload = function() {
+    const welcome = getQueryParam('welcome');
+    const nama = getQueryParam('nama');
+
+    if (welcome === '1' && nama) {
+        showPopup(`Selamat datang, ${decodeURIComponent(nama)}! Akun kamu berhasil dibuat.`);
+    }
+}
+
+
+
+

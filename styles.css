@@ -994,6 +994,7 @@ body {
   border-radius: 12px;
 }
 
+
 .profile-password-group input::placeholder {
   color: #bbbbbb;
 }
@@ -1015,6 +1016,24 @@ body {
 
 .profile-password-btn:hover {
   background-color: #e06600;
+}
+
+.lupapasswrd {
+  padding-top: 25px;
+  font-size: 0.9rem;
+  color: #00aaff; /* Warna biru terang untuk link */
+  text-decoration: none;
+  justify-self: start;
+  align-self: center;
+  cursor: pointer;
+  padding-left: 4px;
+  margin-top: 8px; /* sedikit jarak atas agar pas vertikal */
+  transition: color 0.3s ease;
+}
+
+.lupapasswrd:hover {
+  color: #0088cc;
+  text-decoration: underline;
 }
 
 /* Responsive for profile page */
@@ -1043,6 +1062,11 @@ body {
   }
   .profilehtml {
     padding-bottom: 20px;
+  }
+  .lupapasswrd {
+    justify-self: start;
+    padding-left: 0;
+    margin-top: 0;
   }
 }
 
