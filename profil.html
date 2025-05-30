@@ -40,20 +40,23 @@
         </div>
         </header>
 
-        <div class="profile-header">
-            <div class="profile-img-wrapper">
-                <img class="img" src="Element/Icon/Profile.png" alt="Profile Image" />
-                <button type="button" class="btn-profile-plus" title="Ganti Foto Profil">
+        <form action="upload_profile.php" method="POST" enctype="multipart/form-data">
+            <div class="profile-header">
+                <div class="profile-img-wrapper">
+                <img class="img" id="profileImg" src="user_file/default.png" alt="Profile Image" />
+                <label for="upload-photo" class="btn-profile-plus" title="Ganti Foto Profil">
                     <i class="fas fa-plus"></i>
-                </button>
-            </div>
-            <div class="profile-nama">
+                </label>
+                <input type="file" name="photo" id="upload-photo" accept="image/*" style="display: none;" onchange="previewImage()" />
+                </div>
+                <div class="profile-nama">
                 <div class="text-wrapper-5">Hi, Username</div>
                 <p class="text-wrapper-10">
                     Informasi ini bersifat pribadi, berhati-hatilah dalam membagikan informasi.
                 </p>
+                </div>
             </div>
-        </div>
+        </form>
 
         <form>
             <div class="profile-form-grid">
@@ -90,6 +93,7 @@
             </div>
         </form>
     </div>
+    
     <script>
     const fileInput = document.getElementById('upload-photo');
     const profileImg = document.getElementById('img');
@@ -102,52 +106,6 @@
                 profileImg.src = e.target.result;
             }
             reader.readAsDataURL(file);
-        }
-    });
-    </script>
-
-    <script>
-    const searchInput = document.getElementById("searchInput");
-    const resultsContainer = document.getElementById("searchResults");
-
-    let games = [];
-
-    // Ambil data game dari server
-    fetch("get_games.php")
-        .then(response => response.json())
-        .then(data => {
-            games = data;
-        })
-        .catch(error => {
-            console.error("Gagal mengambil data games:", error);
-        });
-
-    searchInput.addEventListener("input", function () {
-        const query = this.value.toLowerCase();
-        resultsContainer.innerHTML = "";
-
-        if (query.length > 0) {
-            const filteredGames = games.filter(game => game.toLowerCase().startsWith(query));
-
-            filteredGames.forEach(game => {
-                const listItem = document.createElement("li");
-                listItem.textContent = game;
-                listItem.classList.add("search-result-item");
-                listItem.onclick = function () {
-                    if (game.toLowerCase() === "mobile legends") {
-                        window.location.href = "Top UP ML/topupfix.html";
-                    } else {
-                        alert("Halaman topup belum tersedia untuk: " + game);
-                    }
-                };
-                resultsContainer.appendChild(listItem);
-            });
-        }
-    });
-
-    document.addEventListener("click", function (event) {
-        if (!searchInput.contains(event.target) && !resultsContainer.contains(event.target)) {
-            resultsContainer.innerHTML = "";
         }
     });
     </script>

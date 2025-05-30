@@ -1045,3 +1045,28 @@ body {
     padding-bottom: 20px;
   }
 }
+
+/* Autosuggest */
+.email-suggestion-list {
+    position: absolute;
+    z-index: 999;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.email-suggestion-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.email-suggestion-list li:hover {
+    background-color: #f0f0f0;
+}

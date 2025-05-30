@@ -37,25 +37,26 @@
                 </div>
                 <div class="input-group">
                     <label for="phone">No Handphone</label>
-                    <input type="text" name="phone" id="phone" placeholder="Masukkan nomor handphone" required>
+                    <input type="tel" name="phone" id="phone" placeholder="Masukkan nomor handphone" maxlength="15" required>
                 </div>
 
                 <div class="input-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Masukkan email" required>
+                    <input type="email" name="email" id="email" list="email-suggestion" placeholder="Masukkan email" required>
+                    <div id="suggestion-box"></div>
                 </div>
 
                 <div class="input-row">
                     <div class="input-group half password-container">
                         <label for="password">Password</label>
                         <input type="password" name="password" id="password" placeholder="Masukkan password" required>
-                        <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
+                        <img src="Element/Icon/eyeclosed.png" class="password-toggle" data-target="password" alt="Show Password">
                     </div>
 
                     <div class="input-group half password-container">
                         <label for="confirm_password">Konfirmasi Password</label>
                         <input type="password" name="confirm_password" id="confirm_password" placeholder="Ulangi password" required>
-                        <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
+                        <img src="Element/Icon/eyeclosed.png" class="password-toggle" data-target="confirm_password" alt="Show Password">
                     </div>
                 </div>
 
@@ -70,7 +71,7 @@
             <p>&copy; 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya</p>
         </footer>
     </div>
-
+</div>
     <script src="Script.js"></script>
 </body>
 </html>

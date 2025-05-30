@@ -1,24 +1,25 @@
 <?php
-// Mengambil file koneksi database
 include('config.php');
+session_start();
 
-session_start();  // Mulai session untuk menyimpan data login jika berhasil
-
-$error = '';  // Variabel untuk pesan error
+$error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Mengambil username dan password dari form
-    $username = $_POST['username'];
+    $identifier = trim($_POST['username']);  // Bisa username atau email
     $password = $_POST['password'];
 
-    // Validasi input
-    if (empty($username) || empty($password)) {
-        $error = "Username dan password harus diisi.";
+    if (empty($identifier) || empty($password)) {
+        $error = "Username/email dan password harus diisi.";
     } else {
-        // Mengecek apakah username yang dimasukkan adalah email atau username biasa
-        $sql = "SELECT * FROM pengguna WHERE username = ? OR email = ?";
+        // Cek apakah input adalah email atau username
+        if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
+            $sql = "SELECT * FROM pengguna WHERE email = ?";
+        } else {
+            $sql = "SELECT * FROM pengguna WHERE username = ?";
+        }
+
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $username, $username);  // Bisa mencari berdasarkan username atau email
+        $stmt->bind_param("s", $identifier);
         $stmt->execute();
         $result = $stmt->get_result();
 

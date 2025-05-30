@@ -7,6 +7,7 @@
     
     <!-- Link ke file CSS eksternal -->
     <link rel="stylesheet" type="text/css" href="login-style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     
     <!-- Font Google untuk tampilan lebih menarik -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -32,14 +33,14 @@
                 <!-- Input untuk username atau email -->
                 <div class="input-group">
                     <label for="username">Username/Email</label>
-                    <input type="text" name="username" id="username" placeholder="Masukkan username atau email" required>
+                    <input type="text" name="username" id="username" placeholder="Masukkan username atau email" autocomplete="chrome-off" required>
                 </div>
 
                 <!-- Input untuk password -->
                 <div class="input-group password-container">
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" placeholder="Masukkan password" required>
-                    <img src="image/eye-closed.png" class="password-toggle" alt="Show Password">
+                    <img src="Element/Icon/eyeclosed.png" class="password-toggle" data-target="password" alt="Show Password">
                 </div>
 
                 <!-- Opsi tambahan: Ingat saya dan lupa password -->
@@ -51,7 +52,7 @@
                 </div>
 
                 <!-- Tombol login -->
-                <a href="index.html" class="btn-login">Masuk</a>
+                <button href="index.html" class="btn-login">Masuk</button>
                 
                 <!-- Tautan ke halaman pendaftaran -->
                 <div>
@@ -60,14 +61,10 @@
                 </div>
             </form>
         </div>
-
-        <!-- Footer halaman -->
         <footer>
             <p class="copyrigth">&copy; 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya</p>
         </footer>
     </div>
-
-    <!-- Link ke file JavaScript eksternal -->
     <script src="Script.js"></script>
 </body>
 </html>
