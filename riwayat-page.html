@@ -10,29 +10,33 @@
 <body>
     <!-- Header Navigation -->
     <header>
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
-                </a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Dashboard</a></li>
-                    <li><a href="leaderboard.html">Leaderboard</a></li>
-                    <li><a href="riwayat-page.html">Riwayat</a></li>
-                    <li><a href="kalkulator-page.html">Kalkulator</a></li>
-                </ul>
-            </nav>
-            <div class="search-profile">
-                <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                </div>
-                <div class="profile">
-                    <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img">
-                </div>
-            </div>
-        </div>
+      <div class="container">
+          <div class="logo">
+            <a href="index.html">
+              <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
+            </a>
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="index.html">Dashboard</a></li>
+                  <li><a href="leaderboard.html">Leaderboard</a></li>
+                  <li><a href="riwayat-page.html">Riwayat</a></li>
+                  <li><a href="kalkulator-page.html">Kalkulator</a></li>
+              </ul>
+          </nav>
+          <div class="search-profile">
+              <div class="search-bar">
+                  <input type="text" id="searchInput" placeholder="Cari Games...">
+                  <ul id="searchResults"></ul>
+              </div>
+              <div class="profile">
+                  <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle" onclick="toggleDropdown()">
+                  <div class="dropdown-menu" id="profileDropdown">
+                    <a href="profile.html">Profil</a>
+                    <a href="logout.php">Keluar</a>
+              </div>
+          </div>
+      </div>
     </header>
 
     <!-- Cek Pembelian Section -->
