@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mobile Legends Top-Up</title>
+    <title>Free Fire Top-Up</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -166,15 +166,20 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 10px;
-      }
-
+      }      /* Updated Product Item Style */
       .product-item {
         background-color: #252525;
         border-radius: 5px;
         padding: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        border: 1px solid transparent;
+      }
+
+      .product-item.selected {
+        background-color: #252525;
+        border: 1px solid #ff6600;
       }
 
       .product-info {
@@ -184,6 +189,7 @@
 
       .product-name {
         font-size: 12px;
+        margin-bottom: 5px;
       }
 
       .product-price {
@@ -194,6 +200,10 @@
       .product-icon {
         width: 24px;
         height: 24px;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
       }
 
       /* Payment Methods */
@@ -205,6 +215,13 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+      }
+
+      .payment-method.selected {
+        border: 1px solid #ff6600;
       }
 
       .payment-logo {
@@ -225,6 +242,10 @@
       .payment-radio {
         display: flex;
         align-items: center;
+      }
+
+      .payment-amount {
+        font-weight: bold;
       }
 
       /* Bank Dropdown */
@@ -257,53 +278,91 @@
         display: flex;
         justify-content: center;
         align-items: center;
+      }      .order-button i {
+        margin-right: 10px;
       }
 
-      .order-button i {
-        margin-right: 10px;
+      /* Error popup */
+      .error-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #333;
+        border-radius: 10px;
+        padding: 20px;
+        z-index: 1000;
+        display: none;
+        min-width: 300px;
+        text-align: center;
+      }
+
+      .error-popup h3 {
+        color: #ff6600;
+        margin-bottom: 15px;
+      }
+
+      .error-popup p {
+        margin-bottom: 20px;
+        color: #fff;
+      }
+
+      .error-close {
+        background-color: #ff6600;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      /* Overlay for popup */
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 999;
+        display: none;
       }
     </style>
   </head>
   <body>
 
-<!-- Header (Updated to match styles.css) -->
+<!-- Header Navigation -->
 <header>
     <div class="container">
         <div class="logo">
-            <img src="/Top UP EPEP/WSA STORE.PNG" alt="WSA Topup Logo" class="logo-img">
+            <a href="index.html">
+                <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
+            </a>
         </div>
         <nav>
-            <ul>
-                <li><a href="index.html" class="active">Beranda</a></li>
+            <ul>                <li><a href="index.html">Dashboard</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
-                <li><a href="riwayat.html">Riwayat</a></li>
-                <li><a href="kalkulator.html">Kalkulator</a></li>
+                <li><a href="riwayat-page.html">Riwayat</a></li>
+                <li><a href="kalkulator-page.html">Kalkulator</a></li>
             </ul>
         </nav>
         <div class="search-profile">
             <div class="search-bar">
-                <input type="text" placeholder="Cari Topup atau Joki Games">
+                <input type="text" id="searchInput" placeholder="Cari Games...">
+                <ul id="searchResults"></ul>
             </div>
-            <div class="user-icon">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    viewBox="0 0 16 16"
-                >
-                    <path
-                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
-                    />
-                </svg>
+            <div class="profile">
+                <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle" onclick="toggleDropdown()">
+                <div class="dropdown-menu" id="profileDropdown">                  <a href="profile.html">Profil</a>
+                  <a href="logout.php">Keluar</a>
+                </div>
             </div>
         </div>
     </div>
-</header>
-
-    <div class="container">
+</header>    <div class="container">
       <div class="banner">
-        <img src="/Top UP EPEP/Banner FF.jpg" alt="FREE FIRE Banner" />
+        <img src="Assets/Banner FF.jpg" alt="FREE FIRE Banner" />
       </div>
 
       <div class="main-content">
@@ -312,9 +371,8 @@
             <div class="section-title">
               <div class="circle"></div>
               <h2>TOPUP</h2>
-            </div>
-            <div class="game-info">
-              <img class="game-image" src="/Top UP EPEP/Topup Free Fire HD.png" alt="FREE FIRE" />
+            </div>            <div class="game-info">
+              <img class="game-image" src="Assets/Topup Free Fire HD.png" alt="FREE FIRE" />
               <div class="game-title">FREE FIRE Diamond</div>
               <div class="rating">5.0 <span class="star">★</span></div>
               <div>Ulasan</div>
@@ -339,8 +397,7 @@
           </div>
         </div>
 
-        <div>
-          <div class="section">
+        <div>          <div class="section">
             <div class="section-title">
               <div class="circle"></div>
               <h2>MASUKKAN ID PENGGUNA</h2>
@@ -350,6 +407,7 @@
                 <div style="flex: 1">
                   <label>ID Pengguna</label>
                   <input
+                    id="user-id"
                     type="number"
                     class="form-control"
                     placeholder="Masukkan ID Pengguna"
@@ -357,12 +415,13 @@
                     pattern="[0-9]*"
                     onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                   />
+                </div>
               </div>
             </div>
             <div class="form-info">
               Untuk menemukan ID Pengguna, klik avatar Anda di pojok kiri
               atas layar dan buka tab Info Umum. ID Pengguna akan
-              ditampilkan di bawah Nickname Anda. Silakan masukkan ID Pengguna dan ID Zona
+              ditampilkan di bawah Nickname Anda. Silakan masukkan ID Pengguna 
               lengkap di sini, misal: 123456789.
             </div>
           </div>
@@ -371,153 +430,147 @@
             <div class="section-title">
               <div class="circle"></div>
               <h2>PILIH PRODUK</h2>
-            </div>
-            <div class="product-grid">
+            </div>            <div class="product-grid">
               <!-- Row 1 -->
-              <div class="product-item">
+              <div class="product-item" onclick="selectProduct(this, '25 Diamond', 5000)" data-price="5000">
                 <div class="product-info">
                   <div class="product-name">25 Diamond</div>
                   <div class="product-price">Rp. 5.000</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
-              </div>
-              <div class="product-item">
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
+              </div>              <div class="product-item" onclick="selectProduct(this, '55 Diamond', 8500)" data-price="8500">
                 <div class="product-info">
                   <div class="product-name">55 Diamond</div>
                   <div class="product-price">Rp. 8.500</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
               </div>
-              <div class="product-item">
+              <div class="product-item" onclick="selectProduct(this, '100 Diamond', 17000)" data-price="17000">
                 <div class="product-info">
                   <div class="product-name">100 Diamond</div>
                   <div class="product-price">Rp. 17.000</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
               </div>
-              <div class="product-item">
+              <div class="product-item" onclick="selectProduct(this, '150 Diamond', 27000)" data-price="27000">
                 <div class="product-info">
                   <div class="product-name">150 Diamond</div>
                   <div class="product-price">Rp. 27.000</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
               </div>
-              <div class="product-item">
+              <div class="product-item" onclick="selectProduct(this, '210 Diamond', 34000)" data-price="34000">
                 <div class="product-info">
                   <div class="product-name">210 Diamond</div>
                   <div class="product-price">Rp. 34.000</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
               </div>
 
               <!-- Row 2 -->
-              <div class="product-item">
+              <div class="product-item" onclick="selectProduct(this, '350 Diamond', 50000)" data-price="50000">
                 <div class="product-info">
                   <div class="product-name">350 Diamond</div>
                   <div class="product-price">Rp. 50.000</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
               </div>
-              <div class="product-item">
+              <div class="product-item" onclick="selectProduct(this, '425 Diamond', 63000)" data-price="63000">
                 <div class="product-info">
                   <div class="product-name">425 Diamond</div>
                   <div class="product-price">Rp. 63.000</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
               </div>
-              <div class="product-item">
+              <div class="product-item" onclick="selectProduct(this, '500 Diamond', 69000)" data-price="69000">
                 <div class="product-info">
                   <div class="product-name">500 Diamond</div>
                   <div class="product-price">Rp. 69.000</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
               </div>
-              <div class="product-item">
+              <div class="product-item" onclick="selectProduct(this, '645 Diamond', 90000)" data-price="90000">
                 <div class="product-info">
                   <div class="product-name">645 Diamond</div>
                   <div class="product-price">Rp. 90.000</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
               </div>
-              <div class="product-item">
+              <div class="product-item" onclick="selectProduct(this, '770 Diamond', 106000)" data-price="106000">
                 <div class="product-info">
                   <div class="product-name">770 Diamond</div>
                   <div class="product-price">Rp. 106.000</div>
                 </div>
-                <img class="product-icon" src="/Top UP EPEP/diamond.png" alt="Diamond" />
+                <img class="product-icon" src="Assets/diamond.png" alt="Diamond" />
               </div>
             </div>
-          </div>
-
-          <div class="section">
+          </div>          <div class="section">
             <div class="section-title">
               <div class="circle"></div>
               <h2>PILIH METODE PEMBAYARAN</h2>
             </div>
-            <div class="payment-method">
+            <div class="payment-method" onclick="selectPaymentMethod(this, 'qris')">
               <div class="payment-logo">
-                <img src="/Top UP EPEP/qris.png" alt="QRIS" />
+                <input type="radio" name="payment" />
+                <img src="Assets/qris.png" alt="QRIS" />
                 <div>QRIS (Satu Kode QR untuk Semua)</div>
               </div>
-              <div>Rp. 100.000</div>
-            </div>
-
-            <!-- Changed to dropdown -->
-            <label for="bank-transfer">Transfer Bank</label>
-            <select id="bank-transfer" class="bank-dropdown">
-              <option value="" disabled selected>Pilih Bank</option>
-              <option value="bri">Bank BRI</option>
-              <option value="bni">Bank BNI</option>
-              <option value="mandiri">Bank MANDIRI</option>
-              <option value="bca">Bank BCA</option>
-            </select>
-
-            <!-- Bank options hidden by default, will be shown based on dropdown selection via JavaScript -->
-            <div id="bank-options" style="display: none;">
-              <div class="payment-method" id="bri-option">
+              <div class="payment-amount">Rp. <span class="payment-price">0</span></div>
+            </div>            
+            <!-- Display all bank options directly -->
+            <div id="bank-options">
+              <div class="payment-method bank-option" onclick="selectPaymentMethod(this, 'bri')">
                 <div class="payment-logo">
                   <input type="radio" name="payment" />
-                  <img src="/Top UP EPEP/bri.png" alt="BRI" />
+                  <img src="Assets/bri.png" alt="BRI" />
                   <div class="payment-info">Pembayaran Melalui Bank BRI</div>
                 </div>
-                <div>Rp. 100.000</div>
+                <div class="payment-amount">Rp. <span class="bank-price">0</span></div>
               </div>
 
-              <div class="payment-method" id="bni-option">
+              <div class="payment-method bank-option" onclick="selectPaymentMethod(this, 'bni')">
                 <div class="payment-logo">
                   <input type="radio" name="payment" />
-                  <img src="/Top UP EPEP/bni.png" alt="BNI" />
+                  <img src="Assets/bni.png" alt="BNI" />
                   <div class="payment-info">Pembayaran Melalui Bank BNI</div>
                 </div>
-                <div>Rp. 100.000</div>
+                <div class="payment-amount">Rp. <span class="bank-price">0</span></div>
               </div>
 
-              <div class="payment-method" id="mandiri-option">
+              <div class="payment-method bank-option" onclick="selectPaymentMethod(this, 'mandiri')">
                 <div class="payment-logo">
                   <input type="radio" name="payment" />
-                  <img src="/Top UP EPEP/mandiri.png" alt="Mandiri" />
+                  <img src="Assets/mandiri.png" alt="Mandiri" />
                   <div class="payment-info">Pembayaran Melalui Bank MANDIRI</div>
                 </div>
-                <div>Rp. 100.000</div>
+                <div class="payment-amount">Rp. <span class="bank-price">0</span></div>
               </div>
 
-              <div class="payment-method" id="bca-option">
+              <div class="payment-method bank-option" onclick="selectPaymentMethod(this, 'bca')">
                 <div class="payment-logo">
                   <input type="radio" name="payment" />
-                  <img src="/Top UP EPEP/bca.png" alt="BCA" />
+                  <img src="Assets/bca.png" alt="BCA" />
                   <div class="payment-info">Pembayaran Melalui Bank BCA</div>
                 </div>
-                <div>Rp. 100.000</div>
+                <div class="payment-amount">Rp. <span class="bank-price">0</span></div>
               </div>
             </div>
           </div>
 
-          <button class="order-button">
+          <button class="order-button" onclick="validateOrder()">
             <i class="fas fa-shopping-cart"></i>
+            
             Pesan Sekarang
           </button>
         </div>
-      </div>
+      </div>    </div>
+
+    <!-- Error Popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="error-popup" id="error-popup">
+      <h3>Perhatian!</h3>
+      <p id="error-message"></p>
+      <button class="error-close" onclick="closeErrorPopup()">OK</button>
     </div>
 
     <!-- Footer (Updated to match styles.css) -->
@@ -525,28 +578,99 @@
         <div class="container">
           © 2025 WSA TOPUP | Solusi Isi Ulang Terpercaya
         </div>
-      </footer>
+    </footer>
 
     <script>
-      // JavaScript to handle bank dropdown selection
-      document.getElementById('bank-transfer').addEventListener('change', function() {
-        var bankOptions = document.getElementById('bank-options');
-        var selectedBank = this.value;
+      // Function to handle product selection
+      function selectProduct(element, productName, price) {
+        // Remove selected class from all products
+        var allProducts = document.querySelectorAll('.product-item');
+        allProducts.forEach(function(item) {
+          item.classList.remove('selected');
+        });
         
-        // Show bank options section
-        bankOptions.style.display = 'block';
+        // Add selected class to clicked product
+        element.classList.add('selected');
         
-        // Hide all bank options first
-        document.getElementById('bri-option').style.display = 'none';
-        document.getElementById('bni-option').style.display = 'none';
-        document.getElementById('mandiri-option').style.display = 'none';
-        document.getElementById('bca-option').style.display = 'none';
-        
-        // Show only the selected bank option
-        if (selectedBank) {
-          document.getElementById(selectedBank + '-option').style.display = 'flex';
+        // Format price with thousand separators
+        function formatPrice(num) {
+          return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
-      });
+        
+        // Update price in payment methods
+        var paymentPrices = document.querySelectorAll('.payment-price');
+        paymentPrices.forEach(function(item) {
+          item.textContent = formatPrice(price);
+        });
+        
+        // Update all bank prices
+        var bankPrices = document.querySelectorAll('.bank-price');
+        bankPrices.forEach(function(item) {
+          item.textContent = formatPrice(price);
+        });
+        
+        // Store selected product info for later use
+        sessionStorage.setItem('selectedProduct', productName);
+        sessionStorage.setItem('selectedPrice', price);
+      }
+
+      // Function to handle payment method selection
+      function selectPaymentMethod(element, method) {
+        // Remove selected class from all payment methods
+        var allPaymentMethods = document.querySelectorAll('.payment-method');
+        allPaymentMethods.forEach(function(item) {
+          item.classList.remove('selected');
+        });
+        
+        // Add selected class to clicked payment method
+        element.classList.add('selected');
+        
+        // Store selected payment method
+        sessionStorage.setItem('selectedPaymentMethod', method);
+      }
+
+      // Function to validate order before proceeding
+      function validateOrder() {
+        var userId = document.getElementById('user-id').value;
+        var selectedProduct = sessionStorage.getItem('selectedProduct');
+        var selectedPaymentMethod = sessionStorage.getItem('selectedPaymentMethod');
+        
+        if (!userId) {
+          showErrorPopup('Silakan masukkan ID Pengguna terlebih dahulu.');
+          return;
+        }
+        
+        if (!selectedProduct) {
+          showErrorPopup('Silakan pilih produk diamond terlebih dahulu.');
+          return;
+        }
+        
+        if (!selectedPaymentMethod) {
+          showErrorPopup('Silakan pilih metode pembayaran terlebih dahulu.');
+          return;
+        }
+        
+        // If all validations pass, proceed to payment page
+        var selectedPrice = sessionStorage.getItem('selectedPrice');
+        var paymentUrl = `pembayaranff.html?userId=${userId}&product=${selectedProduct}&price=${selectedPrice}&payment=${selectedPaymentMethod}`;
+        window.location.href = paymentUrl;
+      }
+
+      // Function to show error popup
+      function showErrorPopup(message) {
+        document.getElementById('error-message').textContent = message;
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('error-popup').style.display = 'block';
+      }
+
+      // Function to close error popup
+      function closeErrorPopup() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('error-popup').style.display = 'none';
+      }
+
+      // Close popup when clicking overlay
+      document.getElementById('overlay').addEventListener('click', closeErrorPopup);
     </script>
   </body>
 </html>
