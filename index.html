@@ -119,7 +119,7 @@
                     <img src="Element/LogoGame/PBLogo" alt="Point Blank" class="game-icon">
                     <span class="game-name">Point Blank</span>
                 </a>
-                <a href= "topupmlfix.html" class="game-card">
+                <a href= "valo.html" class="game-card">
                     <img src="Element/Joki Valorant HD.png" alt="Joki Valorant" class="game-icon">
                     <span class="game-name">Joki Valorant</span>
                 </a>
@@ -226,20 +226,20 @@
     // Data Produk dengan Nama Berbeda
     const products = {
         topup: [
-            { img: "ListGames/MLList.png", name: "Diamond Mobile Legends" },
-            { img: "ListGames/PUBGMList.png", name: "UC PUBG Mobile" },
-            { img: "ListGames/ValoList.png", name: "Valorant Points" },
-            { img: "ListGames/GIList.png", name: "Genesis Crystals Genshin" },
-            { img: "ListGames/PBList.png", name: "Point Blank Cash" },
-            { img: "ListGames/GarenaList.png", name: "Shell Garena" },
-            { img: "ListGames/FFList.png", name: "Free Fire Diamonds" },
-            { img: "ListGames/HOKList.png", name: "Honor of Kings Tokens" },
-            { img: "ListGames/ApexList.png", name: "Apex Legends Coins" },
-            { img: "ListGames/CODMList.png", name: "COD Mobile CP" }
+            { img: "ListGames/MLList.png", name: "Diamond Mobile Legends", href: "topupmlfix.html" },
+            { img: "ListGames/PUBGMList.png", name: "UC PUBG Mobile", href: "pubg.html" },
+            { img: "ListGames/ValoList.png", name: "Valorant Points", href: "valo.html" },
+            { img: "ListGames/GIList.png", name: "Genesis Crystals Genshin", href: "genshin.html" },
+            { img: "ListGames/PBList.png", name: "Point Blank Cash", href: "pb.html" },
+            { img: "ListGames/GarenaList.png", name: "Shell Garena", href: "garenashell.html" },
+            { img: "ListGames/FFList.png", name: "Free Fire Diamonds", href: "ff.html" },
+            { img: "ListGames/HOKList.png", name: "Honor of Kings Tokens", href: "hok.html" },
+            { img: "ListGames/ApexList.png", name: "Apex Legends Coins", href: "topupmlfix.html" },
+            { img: "ListGames/CODMList.png", name: "COD Mobile CP", href: "topupmlfix.html" }
         ],
         joki: [
-            { img: "Element/Joki ML HD.jpg", name: "Joki Rank Mobile Legends" },
-            { img: "Element/Joki Valorant HD.png", name: "Joki Rank Valorant" }
+            { img: "Element/Joki ML HD.jpg", name: "Joki Rank Mobile Legends", href: "topupmlfix.html" },
+            { img: "Element/Joki Valorant HD.png", name: "Joki Rank Valorant", href: "valo.html" }
         ]
     };
 
@@ -252,9 +252,9 @@
         const selectedProducts = products[category];
         productContainer.innerHTML = selectedProducts
             .map(product => `
-                <div class="product-card">
+                <a href="${product.href}" class="product-card">
                     <img src="${product.img}" alt="${product.name}" class="product-img">
-                </div>
+                </a>
             `).join("");
 
         // Update tombol aktif
