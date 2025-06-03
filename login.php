@@ -5,8 +5,8 @@ session_start();
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $identifier = trim($_POST['username']);  // Bisa username atau email
-    $password = $_POST['password'];
+    $identifier = trim($_POST['username']);  // Bisa berupa username atau email
+    $password = $_POST['password'] ?? '';
 
     if (empty($identifier) || empty($password)) {
         $error = "Username/email dan password harus diisi.";
@@ -23,29 +23,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        // Jika username ditemukan
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
 
-            // Trim untuk menghapus spasi yang tidak diinginkan
-            $password = trim($password);
+            // Verifikasi password dengan hash
+            if (password_verify(trim($password), $row['password'])) {
+                // Simpan session
+                $_SESSION['auto_id'] = $row['auto_id'];   // Sesuaikan dengan struktur database
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['nama'] = $row['nama'];
 
-            // Memeriksa apakah password yang dimasukkan cocok dengan yang ada di database
-            if (password_verify($password, $row['password'])) {
-                // Login berhasil, simpan session
-                $_SESSION['user_id'] = $row['id'];  // Menyimpan ID pengguna di session
-                $_SESSION['username'] = $row['username'];  // Menyimpan username di session
-                $_SESSION['nama'] = $row['nama'];  // Menyimpan nama di session
-
-                // Arahkan ke halaman dashboard
+                // Redirect ke index.html
                 echo "<script>alert('Login Berhasil!'); window.location.href = 'index.html';</script>";
                 exit();
             } else {
                 $error = "Password salah.";
             }
         } else {
-            $error = "Username tidak ditemukan.";
+            $error = "Username atau email tidak ditemukan.";
         }
     }
+}
+
+// Jika ada error, tampilkan alert
+if (!empty($error)) {
+    echo "<script>alert('$error'); window.location.href = 'login.html';</script>";
+    exit();
 }
 ?>
