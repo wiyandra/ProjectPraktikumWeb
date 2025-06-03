@@ -24,14 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-
-            // Verifikasi password dengan hash
+            $row = $result->fetch_assoc();            // Verifikasi password dengan hash
             if (password_verify(trim($password), $row['password'])) {
                 // Simpan session
-                $_SESSION['auto_id'] = $row['auto_id'];   // Sesuaikan dengan struktur database
+                $_SESSION['auto_id'] = $row['auto_id'];
+                $_SESSION['user_id'] = $row['auto_id'];  // For compatibility
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['nama'] = $row['nama'];
+                $_SESSION['email'] = $row['email'];
 
                 // Redirect ke index.html
                 echo "<script>alert('Login Berhasil!'); window.location.href = 'index.html';</script>";
