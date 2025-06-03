@@ -92,16 +92,17 @@ INSERT INTO `listgames` (`idgame`, `nama_game`) VALUES
 -- Table structure for table `pengguna`
 --
 
-CREATE TABLE `pengguna` (
-  `id` char(6) NOT NULL,
-  `username` varchar(10) DEFAULT NULL,
-  `password` varchar(20) DEFAULT NULL,
-  `nama` varchar(20) DEFAULT NULL,
-  `email` varchar(30) DEFAULT NULL,
-  `no_hp` varchar(12) DEFAULT NULL,
-  `total_pesanan` varchar(3) DEFAULT NULL,
-  `total_pengeluaran_pesanan` varchar(8) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE pengguna (
+  auto_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(30) UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  nama VARCHAR(50),
+  email VARCHAR(100) UNIQUE,
+  no_hp VARCHAR(15),
+  total_pesanan INT DEFAULT 0,
+  total_pengeluaran_pesanan INT DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 --
 -- Dumping data for table `pengguna`
