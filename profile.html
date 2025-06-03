@@ -32,7 +32,9 @@
                 </div>
             </div>
         </div>
-        </header>        <form action="uploadprofile.php" method="POST" enctype="multipart/form-data">
+        </header>
+
+        <form action="upload_profile.php" method="POST" enctype="multipart/form-data">
             <div class="profile-header">
                 <div class="profile-img-wrapper">
                 <img class="img" id="profileImg" src="user_file/default.png" alt="Profile Image" />
@@ -48,25 +50,27 @@
                 </p>
                 </div>
             </div>
-        
-            <div class="profile-form-grid">
+        </form>
+
+        <form>
             <div class="profile-form-grid">
                 <div class="profile-form-group">
                     <label for="nama">Nama Kamu</label>
-                    <input type="text" id="nama" name="nama" class="input-field" placeholder="Masukkan nama kamu">
+                    <input type="text" id="nama" class="input-field" placeholder="Masukkan nama kamu">
                 </div>
                 <div class="profile-form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" class="input-field" placeholder="Masukkan username">
+                    <input type="text" id="username" class="input-field" placeholder="Masukkan username">
                 </div>
                 <div class="profile-form-group">
                     <label for="email">Alamat Email</label>
-                    <input type="email" id="email" name="email" class="input-field" placeholder="Masukkan email">
-                </div>                <div class="profile-form-group">
-                    <label for="phone">No. Handphone</label>
-                    <input type="tel" id="phone" name="phone" class="input-field" placeholder="Masukkan no. handphone">
+                    <input type="email" id="email" class="input-field" placeholder="Masukkan email">
                 </div>
-            </div>            <div id="statusMessage" class="status-message" style="display: none;"></div>
+                <div class="profile-form-group">
+                    <label for="phone">No. Handphone</label>
+                    <input type="tel" id="phone" class="input-field" placeholder="Masukkan no. handphone">
+                </div>
+            </div>
             <div class="profile-action-row">
                 <button class="btn" type="submit" style="position:static;width:180px;">Simpan</button>
             </div>
@@ -79,31 +83,27 @@
                     <label for="password-baru">Password Baru</label>
                     <input type="password" id="password-baru" class="input-field" placeholder="Masukkan password baru">
                 </div>
-                <a href="forget_password.html" class="lupapasswrd">Lupa Password?</a>
+                <a href="forget_password.php" class="lupapasswrd">Lupa Password?</a>
                 <button class="profile-password-btn" type="button">Ubah Password</button>
         </div>
 
         </form>
     </div>
-      <script src="profile.js"></script>
-    <style>
-        .status-message {
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
+    
+    <script>
+    const fileInput = document.getElementById('upload-photo');
+    const profileImg = document.getElementById('img');
+
+    fileInput.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                profileImg.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
         }
-        .error-message {
-            background-color: #ffe6e6;
-            color: #d9534f;
-            border: 1px solid #d9534f;
-        }
-        .success-message {
-            background-color: #e6ffe6;
-            color: #5cb85c;
-            border: 1px solid #5cb85c;
-        }
-    </style>
+    });
+    </script>
 </body>
 </html>
