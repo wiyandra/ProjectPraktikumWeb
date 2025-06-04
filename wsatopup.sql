@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 12, 2025 at 04:28 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.1.25
+-- Waktu pembuatan: 04 Jun 2025 pada 11.39
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hargatopup`
+-- Struktur dari tabel `hargatopup`
 --
 
 CREATE TABLE `hargatopup` (
@@ -35,7 +35,7 @@ CREATE TABLE `hargatopup` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `hargatopup`
+-- Dumping data untuk tabel `hargatopup`
 --
 
 INSERT INTO `hargatopup` (`hargaid`, `idgame`, `nominal`, `harga`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `hargatopup` (`hargaid`, `idgame`, `nominal`, `harga`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `leaderboard`
+-- Struktur dari tabel `leaderboard`
 --
 
 CREATE TABLE `leaderboard` (
@@ -58,7 +58,7 @@ CREATE TABLE `leaderboard` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `leaderboard`
+-- Dumping data untuk tabel `leaderboard`
 --
 
 INSERT INTO `leaderboard` (`id`, `nama`, `total_pengeluaran_pesanan`) VALUES
@@ -67,7 +67,7 @@ INSERT INTO `leaderboard` (`id`, `nama`, `total_pengeluaran_pesanan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `listgames`
+-- Struktur dari tabel `listgames`
 --
 
 CREATE TABLE `listgames` (
@@ -76,7 +76,7 @@ CREATE TABLE `listgames` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `listgames`
+-- Dumping data untuk tabel `listgames`
 --
 
 INSERT INTO `listgames` (`idgame`, `nama_game`) VALUES
@@ -89,37 +89,20 @@ INSERT INTO `listgames` (`idgame`, `nama_game`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pengguna`
+-- Struktur dari tabel `pengguna`
 --
 
-CREATE TABLE pengguna (
-  auto_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(30) UNIQUE,
-  password VARCHAR(255) NOT NULL,
-  nama VARCHAR(50),
-  email VARCHAR(100) UNIQUE,
-  no_hp VARCHAR(15),
-  total_pesanan INT DEFAULT 0,
-  total_pengeluaran_pesanan INT DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
---
--- Dumping data for table `pengguna`
---
-
-INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `email`, `no_hp`, `total_pesanan`, `total_pengeluaran_pesanan`) VALUES
-('WSA001', 'wsanibos', 'samainaja', 'Wiyandra Syaiful A', 'wsanibos@gmail.com', '08124871234', '3', '150000'),
-('WSA002', 'aficans', 'aficans123', 'Afi Cans', 'aficans@gmail.com', '0812312583', '0', '0'),
-('WSA003', 'aanjels', 'aanjels123', 'Aan Jels', 'aanjels@gmail.com', '08123152241', '0', '0'),
-('WSA004', 'farrelz', 'farrelz123', 'farrelzew', 'farrelz@gmail.com', '0812487512', '0', '0'),
-('WSA005', 'ghifarno', 'ghifarno123', 'Ghifari', 'ghifarno@gmail.com', '081247127454', '0', '0');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `riwayat`
---
+CREATE TABLE `pengguna` (
+  `auto_id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `username` varchar(30) UNIQUE,
+  `password` varchar(255) NOT NULL,
+  `nama` varchar(50),
+  `email` varchar(100) UNIQUE,
+  `no_hp` varchar(15),
+  `total_pesanan` int(11) DEFAULT 0,
+  `total_pengeluaran_pesanan` int(11) DEFAULT 0,
+  `profile_image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `riwayat` (
   `tanggal` date DEFAULT NULL,
@@ -129,6 +112,16 @@ CREATE TABLE `riwayat` (
   `harga` int(7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+--
+-- Dumping data untuk tabel `pengguna`
+--
+
+INSERT INTO `pengguna` (`auto_id`, `username`, `password`, `nama`, `email`, `no_hp`, `total_pesanan`, `total_pengeluaran_pesanan`, `profile_image`) VALUES
+(1, 'erer56', '$2y$10$BDSO8SY.dOBmcI4nSfncFe0GOnovvn8dvyirI1XMQwFD1jXx0365W', 'sapt', 'sap@sap.to', '085', 0, 0, 'uploads/1_profile_1748957064.jpg');
+
+--
+-- Indexes for dumped tables
 --
 -- Dumping data for table `riwayat`
 --
@@ -173,57 +166,13 @@ END
 $$
 DELIMITER ;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `hargatopup`
---
-ALTER TABLE `hargatopup`
-  ADD PRIMARY KEY (`hargaid`),
-  ADD KEY `fk_games` (`idgame`),
-  ADD KEY `nominal` (`nominal`),
-  ADD KEY `harga` (`harga`);
-
---
--- Indexes for table `leaderboard`
---
 ALTER TABLE `leaderboard`
   ADD KEY `fk_nama` (`nama`),
   ADD KEY `fk_idlead` (`id`);
 
---
--- Indexes for table `listgames`
---
 ALTER TABLE `listgames`
   ADD PRIMARY KEY (`idgame`);
 
---
--- Indexes for table `pengguna`
---
-ALTER TABLE `pengguna`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username_uniq` (`username`),
-  ADD KEY `nama` (`nama`),
-  ADD KEY `total_pengeluaran_pesanan` (`total_pengeluaran_pesanan`);
-
---
--- Indexes for table `riwayat`
---
-ALTER TABLE `riwayat`
-  ADD PRIMARY KEY (`idbeli`),
-  ADD KEY `fk_nominal1` (`nominal`),
-  ADD KEY `fk_harga` (`harga`),
-  ADD KEY `fk_id` (`id`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `hargatopup`
---
 ALTER TABLE `hargatopup`
   ADD CONSTRAINT `fk_games` FOREIGN KEY (`idgame`) REFERENCES `listgames` (`idgame`);
 
@@ -242,6 +191,32 @@ ALTER TABLE `riwayat`
   ADD CONSTRAINT `fk_id` FOREIGN KEY (`id`) REFERENCES `pengguna` (`id`),
   ADD CONSTRAINT `fk_nominal` FOREIGN KEY (`nominal`) REFERENCES `hargatopup` (`nominal`),
   ADD CONSTRAINT `fk_nominal1` FOREIGN KEY (`nominal`) REFERENCES `hargatopup` (`nominal`);
+--
+-- Indexes for dumped tables
+--
+ALTER TABLE `hargatopup`
+  ADD PRIMARY KEY (`hargaid`),
+  ADD KEY `fk_games` (`idgame`),
+  ADD KEY `nominal` (`nominal`),
+  ADD KEY `harga` (`harga`);
+
+--
+-- Indeks untuk tabel `pengguna`
+--
+ALTER TABLE `pengguna`
+  ADD PRIMARY KEY (`auto_id`),
+  ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `pengguna`
+--
+ALTER TABLE `pengguna`
+  MODIFY `auto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
