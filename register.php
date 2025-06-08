@@ -39,8 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_insert->bind_param("sssss", $nama, $username, $no_hp, $email, $password_hashed);
 
             if ($stmt_insert->execute()) {
-                session_start();
+                $new_user_auto_id = $conn->insert_id;
                 $_SESSION['nama'] = $nama;
+                $_SESSION['user_id'] = $new_user_auto_id;
                 header("Location: login.html");
                 exit();
 
