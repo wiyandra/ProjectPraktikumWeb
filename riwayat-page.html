@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header Navigation -->
     <header>
       <div class="container">
           <div class="logo">
@@ -30,29 +29,24 @@
                   <ul id="searchResults"></ul>
               </div>
               <div class="profile">
-                  <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle" onclick="toggleDropdown()">
+                  <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle">
                   <div class="dropdown-menu" id="profileDropdown">
-                    <a href="profile.html">Profil</a>
-                    <a href="logout.php">Keluar</a>
+                      <a href="profile.html">Profil</a>
+                      <a href="logout.php">Keluar</a>
+                  </div>
               </div>
           </div>
-      </div>
     </header>
 
-    <!-- Cek Pembelian Section -->
-    <section class="cek-pembelian-section">
-        <div class="container">
-            <h2>Cek Pembelian Kamu</h2>
-            <p>Lihat detail riwayat pembelian menggunakan ID pembelian kamu</p>
-            <div class="cek-pembelian">
-                <h3>MASUKKAN ID PEMBELIAN</h3>
+    <section class="testimonials-section"> <div class="container">
+            <h1>Cari ID Pembelian</h1>
+            <div class="search-id-container">
                 <input type="text" placeholder="Masukkan ID Pembelian (contoh ID: WSA0001)">
                 <button>Cek Detail Pembelian</button>
             </div>
         </div>
     </section>
 
-    <!-- Riwayat Transaksi Section -->
     <section class="riwayat-transaksi">
         <div class="container">
             <h2>Riwayat Transaksi</h2>
@@ -65,29 +59,23 @@
                         <tr>
                             <th>Tanggal Pembelian</th>
                             <th>ID Pembelian</th>
-                            <th>Katalog Pembelian</th>
-                            <th>Nominal</th>
-                        </tr>
+                            <th>Total Uang</th> </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>HH/BB/TTTT</td>
-                            <td>WSA0001</td>
-                            <td>Beli Apa</td>
-                            <td>Rp. xxxx</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
-                    </tbody>
+                    <tbody id="riwayatTableBody">
+                        </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-<footer>
+    <footer>
     <div class="container">
         <p>&copy; 2023 WSA TOPUP | Made by Group Transaksi</p>
     </div>
 </footer>
+
+    <script src="leaderboard.js"></script>
+    <script src="riwayat.js"></script>
+
 </body>
 </html>
