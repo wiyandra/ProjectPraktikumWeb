@@ -725,6 +725,91 @@ table td {
     background-color: #333;
 }
 
+/* Cari ID Pembelian Section */
+.testimonials-section h1 {
+    font-size: 2.5em;
+    color: #ffa500;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.search-id-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+.search-id-container input[type="text"] {
+    padding: 12px 20px;
+    width: 350px;
+    border: 2px solid #ffa500;
+    border-radius: 25px;
+    background-color: #333;
+    color: #ffffff;
+    font-size: 1em;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.search-id-container input[type="text"]::placeholder {
+    color: #ccc;
+}
+
+.search-id-container input[type="text"]:focus {
+    border-color: #ff8c00;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.6);
+}
+
+.search-id-container button {
+    padding: 12px 25px;
+    background-color: #ffa500;
+    color: #121212;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-id-container button:hover {
+    background-color: #ff8c00;
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for the search ID section */
+@media (max-width: 768px) {
+    .search-id-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search-id-container input[type="text"],
+    .search-id-container button {
+        width: 80%; /* Make input and button take more width on small screens */
+        max-width: 350px;
+    }
+
+    .testimonials-section h1 {
+        font-size: 2em;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-id-container input[type="text"],
+    .search-id-container button {
+        width: 95%;
+    }
+
+    .testimonials-section h1 {
+        font-size: 1.8em;
+    }
+}
+
 /* Leaderboard Styles */
 .testimonials-section {
     padding: 50px 0;
