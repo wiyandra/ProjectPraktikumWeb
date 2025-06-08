@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSA TOPUP | Pembayaran Selesai</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .completion-section {
+            background-color: #222;
+            border-radius: 10px;
+            margin: 40px 0;
+            padding: 60px 40px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .completion-icon {
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .completion-icon i {
+            font-size: 50px;
+            color: white;
+        }
+        
+        .completion-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        
+        .completion-message {
+            font-size: 18px;
+            color: #cccccc;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .whatsapp-redirect-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            margin: 20px auto;
+            text-decoration: none;
+        }
+        
+        .whatsapp-redirect-btn:hover {
+            background-color: #20B358;
+        }
+        
+        .whatsapp-redirect-btn i {
+            font-size: 18px;
+        }
+        
+        .back-btn {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        
+        .back-btn:hover {
+            background-color: #e55900;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="logo-img">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="riwayat-page.html">Riwayat</a></li>
+                    <li><a href="kalkulator-page.html">Kalkulator</a></li>
+                </ul>
+            </nav>
+            <div class="search-profile">
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Cari Games...">
+                    <ul id="searchResults"></ul>
+                </div>
+                <div class="profile">
+                    <img src="Element/Icon/Profile.png" alt="Profile" class="profile-img" id="profileToggle" onclick="toggleDropdown()">
+                    <div class="dropdown-menu" id="profileDropdown">
+                        <a href="profil.html">Profil</a>
+                        <a href="logout.php">Keluar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Completion Section -->
+        <div class="completion-section">
+            <div class="completion-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h1 class="completion-title">Selesai!</h1>
+            <p class="completion-message">
+                Proses Topup akan dilanjutkan melalui WhatsApp.<br>
+                Silakan klik tombol di bawah untuk melanjutkan ke WhatsApp.
+            </p>
+            
+            <a href="#" id="whatsapp-link" class="whatsapp-redirect-btn">
+                <i class="fab fa-whatsapp"></i>
+                Lanjutkan ke WhatsApp
+            </a>
+            
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-home"></i>
+                Kembali ke Beranda
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="Element/LOGOWSA.PNG" alt="WSA Logo" class="footer-logo-img">
+                    </div>
+                    <div class="footer-slogan">
+                        <h3>WSA TOPUP</h3>
+                        <p>Solusi Isi Ulang Terpercaya</p>
+                    </div>
+                    <div class="footer-description">
+                        <p>Platform terpercaya untuk top up game favorit Anda dengan harga terjangkau dan proses cepat.</p>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Layanan</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-gamepad"></i> Top Up Games</a></li>
+                            <li><a href="#"><i class="fas fa-trophy"></i> Joki Rank</a></li>
+                            <li><a href="#"><i class="fas fa-gift"></i> Event & Promo</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Bantuan</h4>
+                        <ul>
+                            <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                            <li><a href="#"><i class="fas fa-headset"></i> Customer Service</a></li>
+                            <li><a href="#"><i class="fas fa-file-alt"></i> Panduan</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Hubungi Kami</h4>
+                        <ul class="social-links">
+                            <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a href="#"><i class="fab fa-telegram"></i> Telegram</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 WSA TOPUP | Made by Group Kelompok 2</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript untuk tombol profile dropdown
+        function toggleDropdown() {
+            const dropdown = document.getElementById("profileDropdown");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        // Menutup dropdown jika diklik di luar area profil
+        window.addEventListener("click", function(event) {
+            const profile = document.querySelector(".profile");
+            const dropdown = document.getElementById("profileDropdown");
+            if (!profile.contains(event.target)) {
+                dropdown.style.display = "none";
+            }
+        });
+
+        // Get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Initialize WhatsApp link
+        window.onload = function() {
+            var message = getUrlParameter('message');
+            var whatsappNumber = '+6287875142643';
+            var whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(message);
+            
+            document.getElementById('whatsapp-link').href = whatsappUrl;
+            document.getElementById('whatsapp-link').target = '_blank';
+            
+            // Auto redirect after 3 seconds
+            setTimeout(function() {
+                window.open(whatsappUrl, '_blank');
+            }, 3000);
+        };
+    </script>
+</body>
+</html>

@@ -266,11 +266,37 @@
         .status-pending {
             background-color: #FFC107;
             color: black;
-        }
-
-        .status-unpaid {
+        }        .status-unpaid {
             background-color: #c64b2a;
             color: black;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #e55900;
+        }
+        
+        .whatsapp-btn i {
+            font-size: 18px;
         }
     </style>
 </head>
@@ -383,7 +409,7 @@
                     <div class="account-details">
                         <div class="detail-row">
                             <div class="detail-label">Nickname</div>
-                            <div class="detail-value">: Player123</div>
+                            <div class="detail-value">: ⚔️C͜͡a℘tain々WSA⚔️</div>
                         </div>
                         <div class="detail-row">
                             <div class="detail-label">ID</div>
@@ -413,49 +439,16 @@
                         <div class="detail-item">
                             <span>Biaya Admin</span>
                             <span>Rp. 1.500</span>
-                        </div>
-                        <div class="total-payment">
+                        </div>                        <div class="total-payment">
                             <span><strong>Total Pembayaran</strong></span>
-                            <div style="display: flex; align-items: center;">
-                                <span id="total-amount"><strong>Rp. 6.500</strong></span>
-                                <div class="copy-icon" onclick="copyToClipboard('total-amount')" title="Copy">
-                                    <i class="fas fa-copy" style="font-size: 12px; color: white;"></i>
-                                </div>
-                            </div>
+                            <span id="total-amount"><strong>Rp. 6.500</strong></span>
                         </div>
-                        
-                        <!-- QR Code Section (shown for QRIS) -->
-                        <div class="qr-section" id="qr-section">
-                            <div class="qr-code">
-                                <img src="Assets/wsa qr.png" alt="QR Code">
-                            </div>
-                            <button class="download-btn" onclick="downloadQR()">
-                                <i class="fas fa-download"></i>
-                                Unduh QR Code
+                          <!-- Continue via WhatsApp Button -->
+                        <div style="margin-top: 20px; text-align: center;">
+                            <button class="whatsapp-btn" onclick="continueViaWhatsApp()">
+                                <i class="fab fa-whatsapp"></i>
+                                Lanjut via WhatsApp
                             </button>
-                        </div>
-                        
-                        <!-- Bank Transfer Section (hidden by default) -->
-                        <div id="bank-transfer-section" style="display: none;">
-                            <div class="detail-item">
-                                <span>Nomor Virtual Account</span>
-                                <div style="display: flex; align-items: center;">
-                                    <span id="va-number">8812345678901234</span>
-                                    <div class="copy-icon" onclick="copyToClipboard('va-number')" title="Copy VA Number">
-                                        <i class="fas fa-copy" style="font-size: 12px; color: white;"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="margin-top: 15px; padding: 10px; background-color: #444; border-radius: 5px;">
-                                <h4 style="margin-bottom: 10px;">Cara Pembayaran:</h4>
-                                <ol style="margin-left: 20px; color: #ccc;">
-                                    <li>Buka aplikasi mobile banking atau ATM</li>
-                                    <li>Pilih menu Transfer</li>
-                                    <li>Masukkan nomor Virtual Account</li>
-                                    <li>Masukkan nominal pembayaran</li>
-                                    <li>Konfirmasi pembayaran</li>
-                                </ol>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -511,9 +504,7 @@
             if (paymentMethod) {
                 updatePaymentMethod(paymentMethod);
             }
-        }
-
-        // Update payment method display
+        }        // Update payment method display
         function updatePaymentMethod(method) {
             var methodNames = {
                 'qris': 'QRIS (Satu Kode QR untuk Semua)',
@@ -524,45 +515,32 @@
             };
 
             document.getElementById('payment-method-name').textContent = methodNames[method] || 'QRIS';
-
-            // Show/hide sections based on payment method
-            if (method === 'qris') {
-                document.getElementById('qr-section').style.display = 'flex';
-                document.getElementById('bank-transfer-section').style.display = 'none';
-            } else {
-                document.getElementById('qr-section').style.display = 'none';
-                document.getElementById('bank-transfer-section').style.display = 'block';
-            }
         }
-
-        // Copy to clipboard function
-        function copyToClipboard(elementId) {
-            var element = document.getElementById(elementId);
-            var text = element.textContent.replace('Rp. ', '').replace(/\./g, '');
+        
+        // Continue via WhatsApp function
+        function continueViaWhatsApp() {
+            var product = getUrlParameter('product') || '25 Diamond';
+            var price = getUrlParameter('price') || '5000';
+            var paymentMethod = getUrlParameter('payment') || 'qris';
+            var userId = getUrlParameter('userId') || '123456789';
             
-            navigator.clipboard.writeText(text).then(function() {
-                alert('Berhasil disalin ke clipboard!');
-            }).catch(function() {
-                // Fallback for older browsers
-                var textArea = document.createElement("textarea");
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                alert('Berhasil disalin ke clipboard!');
-            });
-        }
-
-        // Download QR Code function
-        function downloadQR() {
-            var link = document.createElement('a');
-            link.download = 'qr-code-payment.png';
-            link.href = 'Assets/wsa qr.png';
-            link.click();
-        }
-
-        // Timer countdown
+            var methodNames = {
+                'qris': 'QRIS',
+                'bri': 'Transfer Bank BRI',
+                'bni': 'Transfer Bank BNI',
+                'mandiri': 'Transfer Bank MANDIRI',
+                'bca': 'Transfer Bank BCA'
+            };
+            
+            var selectedMethod = methodNames[paymentMethod] || 'QRIS';
+            var formattedPrice = formatPrice(parseInt(price) + 1500); // Add admin fee
+            
+            var message = `Saya ingin TopUp FreeFire ${product}, dengan harga ${formattedPrice}, Melalui metode pembayaran ${selectedMethod}.
+            ID saya adalah ${userId}. Tolong segera diproses ya.`;
+            
+            // Redirect to completion page first
+            window.location.href = 'pembayaran-selesai.html?product=' + encodeURIComponent(product) + '&price=' + price + '&payment=' + paymentMethod + '&message=' + encodeURIComponent(message);
+        }        // Timer countdown
         function startTimer() {
             var timeLeft = 2 * 60 * 60 + 27 * 60 + 48; // 2 hours 27 minutes 48 seconds in seconds
             
