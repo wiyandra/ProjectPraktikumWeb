@@ -135,33 +135,41 @@ INSERT INTO `riwayat` (`tanggal`, `idbeli`, `id`, `nominal`, `harga`) VALUES
 -- Triggers `riwayat`
 --
 DELIMITER $$
-CREATE TRIGGER `update_leaderboard_after_insert` AFTER INSERT ON `riwayat` FOR EACH ROW BEGIN
+BEGIN
+    DECLARE numeric_user_auto_id INT;
+    SET numeric_user_auto_id = CAST(SUBSTRING(NEW.id, 4) AS UNSIGNED); -- Assumes NEW.id is 'WSA###'
+
     -- Periksa apakah pengguna sudah ada di leaderboard
     IF EXISTS (SELECT 1 FROM leaderboard WHERE id = NEW.id) THEN
         -- Jika sudah ada, update data leaderboard
-        UPDATE leaderboard
-        JOIN pengguna ON leaderboard.id = pengguna.id
-        SET 
-            leaderboard.total_pengeluaran_pesanan = pengguna.total_pengeluaran_pesanan,
-            leaderboard.nama = pengguna.nama
-        WHERE leaderboard.id = NEW.id;
+        UPDATE leaderboard AS l
+        JOIN pengguna AS p ON p.auto_id = numeric_user_auto_id -- Join using the extracted numeric auto_id
+        SET
+            l.total_pengeluaran_pesanan = p.total_pengeluaran_pesanan,
+            l.nama = p.nama
+        WHERE l.id = NEW.id; -- Match the specific WSA### from riwayat
     ELSE
         -- Jika belum ada, insert data baru ke leaderboard
         INSERT INTO leaderboard (id, total_pengeluaran_pesanan, nama)
-        SELECT id, total_pengeluaran_pesanan, nama
-        FROM pengguna
-        WHERE id = NEW.id;
+        SELECT CONCAT('WSA', LPAD(p.auto_id, 3, '0')), -- Generate WSA### ID for leaderboard
+               p.total_pengeluaran_pesanan,
+               p.nama
+        FROM pengguna AS p
+        WHERE p.auto_id = numeric_user_auto_id; -- Match using the numeric auto_id
     END IF;
 END
 $$
 DELIMITER ;
 DELIMITER $$
-CREATE TRIGGER `update_pengguna_after_insert` AFTER INSERT ON `riwayat` FOR EACH ROW BEGIN
+BEGIN
+    DECLARE numeric_user_auto_id INT;
+    SET numeric_user_auto_id = CAST(SUBSTRING(NEW.id, 4) AS UNSIGNED); -- Assumes NEW.id is 'WSA###'
+
     UPDATE pengguna
-    SET 
+    SET
         total_pesanan = total_pesanan + 1,
         total_pengeluaran_pesanan = total_pengeluaran_pesanan + NEW.harga
-    WHERE id = NEW.id;
+    WHERE auto_id = numeric_user_auto_id; -- Update based on the numeric auto_id
 END
 $$
 DELIMITER ;

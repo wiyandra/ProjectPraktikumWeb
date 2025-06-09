@@ -22,7 +22,9 @@ if (!isset($_SESSION['auto_id'])) {
     die(json_encode(['error' => 'User not authenticated. Please log in.', 'not_logged_in' => true]));
 }
 
-$user_id = $_SESSION['user_id'];
+$numeric_id = $_SESSION['auto_id'];
+
+$user_id_for_riwayat = 'WSA' . str_pad($numeric_id, 3, '0', STR_PAD_LEFT);
 
 $sql = "SELECT
             r.tanggal,      -- Changed from tanggal_pembelian to tanggal
@@ -39,7 +41,7 @@ $sql = "SELECT
 $stmt = $conn->prepare($sql);
 
 if ($stmt) {
-    $stmt->bind_param("s", $user_id);
+    $stmt->bind_param("s", $user_id_for_riwayat);
     $stmt->execute();
     $result = $stmt->get_result();
 
